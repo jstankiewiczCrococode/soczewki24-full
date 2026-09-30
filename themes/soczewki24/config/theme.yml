@@ -48,20 +48,11 @@ global_settings:
         - ps_socialfollow
       displaySearch:
         - ps_searchbar
+      displayTop:
+        - ps_mainmenu
     modules_to_hook:
       displayAfterBodyOpeningTag:
         - blockreassurance
-        # Keep existing hooks and append them after
-        - ~
-      displayNav1:
-        - ps_contactinfo
-        # Keep existing hooks and append them after
-        - ~
-      displayNav2:
-        - ps_languageselector
-        - ps_currencyselector
-        - ps_customersignin
-        - ps_shoppingcart
         # Keep existing hooks and append them after
         - ~
       displayNavFullWidth:
@@ -69,8 +60,9 @@ global_settings:
         # Keep existing hooks and append them after
         - ~
       displayTop:
-        - ps_mainmenu
         - ps_searchbar
+        - ps_shoppingcart
+        - ps_customersignin
         # Keep existing hooks and append them after
         - ~
       displayHome:

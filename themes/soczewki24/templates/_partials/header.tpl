@@ -4,7 +4,6 @@
  *}
 
 {$headerBanner = 'header-banner'}
-{$headerTop = 'header-top'}
 {$headerBottom = 'header-bottom'}
 {$headerNavFullWidth = 'header-nav-full-width'}
 
@@ -13,26 +12,6 @@
   {if !empty($smarty.capture.header_banner)}
     <div class="{$headerBanner}">
       {$smarty.capture.header_banner nofilter}
-    </div>
-  {/if}
-{/block}
-
-{capture name="header_nav_1"}{hook h='displayNav1'}{/capture}
-{capture name="header_nav_2"}{hook h='displayNav2'}{/capture}
-{block name='header_nav'}
-  {if !empty($smarty.capture.header_nav_1) || !empty($smarty.capture.header_nav_2)}
-    <div class="{$headerTop} d-none d-md-block">
-      <div class="container-md">
-        <div class="row">
-          <div class="{$headerTop}__left col-md-4">
-            {$smarty.capture.header_nav_1 nofilter}
-          </div>
-
-          <div class="{$headerTop}__right col-md-8">
-            {$smarty.capture.header_nav_2 nofilter}
-          </div>
-        </div>
-      </div>
     </div>
   {/if}
 {/block}
@@ -50,16 +29,6 @@
         </div>
 
         {hook h='displayTop'}
-
-        <div id="_mobile_ps_customersignin" class="d-md-none d-flex col-auto">
-          {* JUST PLACEHOLDER FOR RESPONSIVE COMPONENT TO LOAD REAL ONE *}
-          <div class="header-block">
-            <a href="{$urls.pages.my_account}" class="header-block__action-btn">
-              <i class="material-icons header-block__icon" aria-hidden="true">&#xE853;</i>
-            </a>
-          </div>
-          {* JUST PLACEHOLDER FOR RESPONSIVE COMPONENT TO LOAD REAL ONE *}
-        </div>
 
         {if !$configuration.is_catalog}
           <div id="_mobile_ps_shoppingcart" class="d-md-none d-flex col-auto">

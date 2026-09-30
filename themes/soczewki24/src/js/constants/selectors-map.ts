@@ -107,6 +107,12 @@ export const progressRing = {
   text: '.progress-ring text',
 };
 
+export const announcementBar = {
+  bar: '[data-announcement-bar]',
+  close: '[data-announcement-close]',
+  focusAfterClose: '.header-bottom__logo a',
+};
+
 export const mobileMenu = {
   openChildsButton: '.js-menu-open-child',
   backTitle: '.js-menu-back-title',
@@ -252,6 +258,7 @@ const selectorsMap = {
   currencySelector,
   languageSelector,
   searchBar,
+  announcementBar,
   mobileMenu,
   guestPasswordToggle,
   visiblePassword,

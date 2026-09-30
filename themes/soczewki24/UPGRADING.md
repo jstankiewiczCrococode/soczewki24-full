@@ -36,6 +36,23 @@ Trzymaj te liste aktualna - to ona decyduje, czy nastepny upgrade zajmie godzine
 - `package.json` - name, version, description
 - `src/scss/abstract/variables/_tokens.scss` - **nowy plik**, tokeny z Figmy
 - `src/scss/abstract/variables/_index.scss` - dodany import `tokens` na poczatku
+- `src/scss/prestashop/layout/_header-bottom.scss` - `position: relative` na `.header-bottom`, jako kontekst pozycjonowania mega-panelu na cala szerokosc
+- `src/scss/prestashop/modules/_index.scss` - dodany import `megamenu`
+- `src/scss/prestashop/layout/_index.scss` - dodany import `header-banner`, usuniety import `header-top`
+- `src/scss/prestashop/layout/_header-top.scss` - **usuniety**, pasek `header-top` nie istnieje w naszym designie
+- `templates/_partials/header.tpl` - usuniety blok `header_nav` (pasek `header-top` z hookami `displayNav1` i `displayNav2`). Hooki `displayNav1`/`displayNav2` nie sa juz nigdzie wywolywane. Usuniety takze mobilny placeholder `_mobile_ps_customersignin` (ikona konta w mobilnym wierszu), bo konto jest przyciskiem w menu mobilnym `croco_megamenu`
+- `config/theme.yml` - usuniete wpisy `displayNav1` i `displayNav2`, `ps_shoppingcart` i `ps_customersignin` przeniesione do `displayTop`, `ps_mainmenu` usuniety z `modules_to_hook` i dodany do `modules_to_unhook` (`displayTop`), bo menu robi `croco_megamenu`. Uwaga: `modules_to_hook` PRZENOSI wymienione moduly (zdejmuje je ze wszystkich innych hookow), a modul niewymieniony zachowuje hooki z wlasnego `install()`, dlatego samo wyciecie z `modules_to_hook` nie wystarczy - trzeba jawnie odpiac
+- `src/scss/prestashop/layout/_header-banner.scss` - **nowy plik**, pasek komunikatu nad headerem (hook `displayBanner`, tresc w `croco_soczewki`)
+- `src/js/theme.ts` - import i wywolanie `initAnnouncementBar()` obok `initSearchbar()`
+- `src/js/constants/selectors-map.ts` - dodany obiekt `announcementBar` i wpis w `selectorsMap`
+- `src/js/announcement-bar.ts` + `announcement-bar.test.ts` - **nowe pliki**, zamykanie paska i zapis ciasteczka
+- `src/scss/prestashop/modules/_megamenu.scss` - **nowy plik**, style modulu `croco_megamenu`
+- `src/scss/prestashop/modules/_searchbar.scss` - reguly widgetu w offcanvasie obowiazuja na kazdym breakpoincie (dawny blok `media-breakpoint-down(md)` usuniety)
+- `modules/ps_searchbar/ps_searchbar.tpl` - **przepisany**: wersja desktop z inputem w headerze usunieta, sama lupa otwierajaca offcanvas na kazdym breakpoincie, widget na stale w offcanvasie. Zmiany z upstreamu w tym szablonie trzeba przenosic recznie, `git apply` nie zadziala
+- `templates/components/icon.tpl` + `templates/components/icons/*.svg` - **nowe pliki**, ikony SVG inline z Figmy (`currentColor`)
+- `src/scss/prestashop/components/_icon.scss` - **nowy plik**, rozmiar ikon; import dopisany na koncu `components/_index.scss`
+- `modules/ps_shoppingcart/ps_shoppingcart.tpl` - klasy ukladu na wrapperze (`order-4 col-auto px-md-0 d-none d-md-flex align-items-center`)
+- `modules/ps_customersignin/ps_customersignin.tpl` - klasy ukladu na wrapperze (`order-5 col-auto px-md-0 d-none d-md-flex align-items-center`)
 - Usuniete z forka: `.github/`, `docker/`, `CLAUDE.md`, `CONTEXT.md`, `PRODUCT.md`, `CONTRIBUTING.md`, pliki konfiguracyjne asystentow AI
 
 ## Zasady, ktore trzymaja koszt upgrade'u nisko
