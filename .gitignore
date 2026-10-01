@@ -31,7 +31,16 @@
 # Artefakty / cache / zaleznosci
 # =====================================================================
 
-/themes/soczewki24/assets/
+/themes/soczewki24/assets/*
+!/themes/soczewki24/assets/css/
+!/themes/soczewki24/assets/css/**
+!/themes/soczewki24/assets/fonts/
+!/themes/soczewki24/assets/fonts/**
+!/themes/soczewki24/assets/img-dist/
+!/themes/soczewki24/assets/img-dist/**
+!/themes/soczewki24/assets/js/
+!/themes/soczewki24/assets/js/**
+!/themes/soczewki24/assets/preload.html
 /themes/soczewki24/node_modules/
 /themes/soczewki24/storybook-static/
 /themes/soczewki24/webpack/.env
