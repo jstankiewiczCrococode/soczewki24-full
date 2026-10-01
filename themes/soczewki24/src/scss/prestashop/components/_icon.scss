@@ -1,0 +1,16 @@
+.icon {
+  display: inline-flex;
+  flex-shrink: 0;
+
+  svg {
+    width: 1.25em;
+    height: 1.25em;
+  }
+
+  // Eksport z Figmy ma zaszyte kolory (np. #101828), ktore nie reaguja na
+  // hover ani na kolor przycisku. Normalizujemy tu, a nie w plikach SVG, zeby
+  // ponowny eksport od designera nie cofnal poprawki. Dotyczy ikon jednokolorowych.
+  svg [fill]:not([fill="none"]) {
+    fill: currentcolor;
+  }
+}

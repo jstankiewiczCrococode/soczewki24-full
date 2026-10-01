@@ -1,0 +1,13 @@
+{
+    "name": "soczewki24/pscustomhomeslider",
+    "description": "Slider strony głównej dla PrestaShop",
+    "type": "prestashop-module",
+    "autoload": {
+        "psr-4": {
+            "PrestaShop\\Module\\PsCustomHomeSlider\\": "src/"
+        }
+    },
+    "config": {
+        "prepend-autoloader": false
+    }
+}

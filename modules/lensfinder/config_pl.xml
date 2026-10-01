@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<module>
+    <name>lensfinder</name>
+    <displayName><![CDATA[Wyszukiwarka soczewek]]></displayName>
+    <version><![CDATA[1.0.0]]></version>
+    <description><![CDATA[Wyszukiwarka soczewek według mocy, krzywizny, trybu wymiany i typu korekcji.]]></description>
+    <author><![CDATA[Crococode]]></author>
+    <tab><![CDATA[front_office_features]]></tab>
+    <is_configurable>0</is_configurable>
+    <need_instance>0</need_instance>
+</module>

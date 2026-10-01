@@ -1,0 +1,22 @@
+﻿@use "sass:map";
+
+// Zachowane wartości z Twojego projektu.
+$input-padding-x: 1rem;
+$input-font-size: 1rem;
+$input-font-weight: 400;
+$input-line-height: 1.5;
+
+$input-padding-y: map.get($socz-input-sizes, "md", "padding-y");
+
+$input-padding-y-sm: map.get($socz-input-sizes, "sm", "padding-y");
+$input-padding-x-sm: map.get($socz-input-sizes, "sm", "padding-x");
+$input-font-size-sm: map.get($socz-input-sizes, "sm", "font-size");
+
+$input-border-radius: 4px;
+$input-border-radius-sm: 4px;
+$input-border-radius-lg: 4px;
+
+$input-focus-border-color: $primary;
+$input-focus-box-shadow: none;
+
+$input-disabled-bg: $socz-color-surface-muted;

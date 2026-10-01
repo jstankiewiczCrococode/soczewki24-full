@@ -1,0 +1,107 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: soczewki24_mysql
+    command: --default-authentication-plugin=mysql_native_password --sql-mode=""
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: prestashop
+      MYSQL_USER: prestashop
+      MYSQL_PASSWORD: prestashop
+    volumes:
+      - mysql_data:/var/lib/mysql
+    ports:
+      # 3307 zajmuje lokalnie projekt markowe_kwiaty
+      - "3308:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot"]
+      interval: 5s
+      retries: 20
+
+  redis:
+    image: redis:7-alpine
+    container_name: soczewki24_redis
+    ports:
+      - "6379:6379"
+
+  prestashop:
+    # PS 9.1.x na PHP 8.3. Uwaga: tag "9.1-apache" to alias na "9.1-8.5" (PHP 8.5),
+    # a tag "9.1-8.3-apache" nie istnieje - dla wyboru wersji PHP uzywa sie "9.1-<php>".
+    image: prestashop/prestashop:9.1-8.3
+    container_name: soczewki24_ps
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      DB_SERVER: mysql
+      DB_NAME: prestashop
+      DB_USER: prestashop
+      DB_PASSWD: prestashop
+      DB_PREFIX: ps_
+      PS_DOMAIN: localhost:8090
+      PS_FOLDER_ADMIN: adminsoczewki
+      PS_FOLDER_INSTALL: install
+      PS_DEV_MODE: 1
+      PS_ENABLE_SSL: 0
+      # Sklep jest juz zainstalowany. Na 1 wracamy TYLKO przy instalacji od zera
+      # (make reset), bo instalator kasuje tabele i nadpisuje konfiguracje.
+      PS_INSTALL_AUTO: 0
+      PS_ERASE_DB: 0
+      PS_LANGUAGE: pl
+      PS_COUNTRY: pl
+      ADMIN_MAIL: dev@crococode.it
+      ADMIN_PASSWD: DevPass123!
+    volumes:
+      # Core Presty inicjowany z obrazu, ale utrwalony w wolumenie. Bez tego kazdy
+      # recreate kontenera kasuje app/config/parameters.php i moduly wgrane przez BO,
+      # bo mieszkaja w warstwie zapisu kontenera. Podniesienie wersji PS = zmiana tagu
+      # obrazu ORAZ swiadome usuniecie tego wolumenu (make reset).
+      - ps_core:/var/www/html
+      # Nasz kod montowany na wierzch wolumenu
+      - ./themes/soczewki24:/var/www/html/themes/soczewki24
+      # Kazdy nasz modul montowany osobno - Presta czyta moduly tylko z jednego poziomu
+      - ./modules/croco_soczewki:/var/www/html/modules/croco_soczewki
+      - ./modules/croco_megamenu:/var/www/html/modules/croco_megamenu
+      - ./modules/prettyblocks:/var/www/html/modules/prettyblocks
+      - ./modules/homeitems:/var/www/html/modules/homeitems
+      - ./modules/brandslider:/var/www/html/modules/brandslider
+      - ./modules/aboutcontent:/var/www/html/modules/aboutcontent
+      - ./modules/s24footer:/var/www/html/modules/s24footer
+      - ./modules/lensfinder:/var/www/html/modules/lensfinder
+      - ./modules/blog:/var/www/html/modules/blog
+      - ./modules/pscustomhomeslider:/var/www/html/modules/pscustomhomeslider
+      - ./modules/s24categorypage:/var/www/html/modules/s24categorypage
+      - ./modules/soczewkiimporter:/var/www/html/modules/soczewkiimporter
+      - ./feed.xml:/var/www/html/modules/soczewkiimporter/feed.xml
+      - ./img/homeitems:/var/www/html/img/homeitems
+      - ./override:/var/www/html/override
+      # Dane uzytkownika trwale miedzy restartami
+      - ps_img:/var/www/html/img
+      - ps_upload:/var/www/html/upload
+      - ./docker/php.ini:/usr/local/etc/php/conf.d/zz-local.ini:ro
+      # Lata na bug instalatora PS 9.1 przy niestandardowej nazwie folderu admina
+      - ./docker/pre-install:/tmp/pre-install-scripts:ro
+    ports:
+      # 8080 zajmuje lokalnie projekt markowe_kwiaty
+      - "8090:80"
+
+  mailpit:
+    image: axllent/mailpit:latest
+    container_name: soczewki24_mail
+    ports:
+      - "8025:8025"
+      - "1025:1025"
+
+  adminer:
+    image: adminer:latest
+    container_name: soczewki24_adminer
+    depends_on:
+      - mysql
+    ports:
+      - "8081:8080"
+
+volumes:
+  mysql_data:
+  ps_core:
+  ps_img:
+  ps_upload:

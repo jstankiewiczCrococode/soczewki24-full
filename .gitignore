@@ -1,0 +1,61 @@
+﻿# =====================================================================
+# Repozytorium pełnego projektu Soczewki24
+# =====================================================================
+
+# --- infrastruktura projektu ---
+!/\.gitignore
+!/.editorconfig
+!/README.md
+!/CLAUDE.md
+!/Makefile
+!/docker-compose.yml
+!/.env.example
+!/docker/
+!/bin/
+!/docs/
+!/.github/
+
+# --- nasz motyw ---
+!/themes/
+/themes/*
+!/themes/soczewki24/
+
+# --- wszystkie moduły projektu ---
+!/modules/
+!/modules/**
+
+# --- override ---
+!/override/
+
+# =====================================================================
+# Artefakty / cache / zaleznosci
+# =====================================================================
+
+/themes/soczewki24/assets/
+/themes/soczewki24/node_modules/
+/themes/soczewki24/storybook-static/
+/themes/soczewki24/webpack/.env
+
+node_modules/
+vendor/
+
+# Sekrety i konfiguracja lokalna
+.env
+.env.local
+/docker/data/
+/bin/*.sql
+/bin/*.sql.gz
+
+# Smieci
+.DS_Store
+Thumbs.db
+*.log
+.idea/
+.vscode/
+!.vscode/extensions.json
+
+# --- pliki projektu wysylane razem z wdrozeniem ---
+!/prestashop_local.sql
+!/prettyblocks.tar.gz
+!/feed.xml
+!/theme-local-hashes.csv

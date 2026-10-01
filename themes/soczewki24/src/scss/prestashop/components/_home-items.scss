@@ -1,0 +1,80 @@
+@use "sass:map";
+
+$md: map.get($grid-breakpoints, "md");
+
+.home-items{  
+  background-color: $socz-gray-50;
+  padding-top: 80px;
+  padding-bottom: 80px;
+
+    @media (max-width: 767.98px) { 
+      padding-top: 40px;
+      padding-bottom: 40px;      
+    }
+
+    
+
+  .container{
+    display: flex;
+    gap: 16px;
+
+
+
+  @media (max-width: 1200px) { 
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+   }
+
+
+
+      a{
+    display: flex;
+    padding: 32px;
+    align-items: end;
+    flex: 1;
+    height: 500px;
+    padding: 32px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+
+     @media (max-width: 767.98px) { 
+        height: 140px;   
+        padding-top: 80px;
+        padding-right: 8px;
+        padding-bottom: 16px;
+        padding-left: 8px;
+     }
+
+    &::before{
+      background: linear-gradient(0deg, #000000 0%, rgba(0, 0, 0, 0) 100%);
+      content: '';
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+    }
+
+
+    
+    div{
+      width: 100%;
+      z-index: 1;
+
+    h5{
+      text-align: center;
+      color: white;
+      margin-bottom: 0px;
+    }
+
+  }
+  }
+
+
+}
+}

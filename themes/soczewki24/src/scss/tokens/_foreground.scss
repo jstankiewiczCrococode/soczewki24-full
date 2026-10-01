@@ -1,0 +1,36 @@
+:root {
+  --socz-fg-primary: #{$socz-gray-900}; // Foreground/fg-primary
+  --socz-fg-secondary: #{$socz-gray-700}; // Foreground/fg-secondary
+  --socz-fg-secondary-hover: #{$socz-gray-800}; // Foreground/fg-secondary_hoover
+  --socz-fg-tertiary: #{$socz-gray-500}; // Foreground/fg-tertiary
+  --socz-fg-tertiary-hover: #{$socz-gray-600}; // Foreground/fg-tertiary_hoover
+  --socz-fg-quaternary: #{$socz-gray-300}; // Foreground/fg-quaternary
+  --socz-fg-quaternary-hover: #{$socz-gray-400}; // Foreground/fg-quaternary_hoover
+  --socz-fg-white: #{$socz-white};    // Foreground/fg-white
+  --socz-fg-black: #{$socz-black};    // Foreground/fg-black
+
+  --socz-fg-brand-primary: #{$socz-primary-900}; // Foreground/fg-brand-primary
+  --socz-fg-brand-primary-alt: #{$socz-primary-800}; // Foreground/fg-brand-primary-alt
+  --socz-fg-brand-secondary: #{$socz-primary-700}; // Foreground/fg-brand-secondary
+  --socz-fg-brand-secondary-hover: #{$socz-primary-800}; // Foreground/fg-brand-secondary-hoover
+
+  --socz-fg-error-primary: #{$socz-error-600};   // Foreground/fg-error-primary
+  --socz-fg-error-secondary: #{$socz-error-400};   // Foreground/fg-error-secondary
+  --socz-fg-warning-primary: #{$socz-danger-600};  // Foreground/fg-warning-primary (kolekcja "Danger" w Figmie = nasz bursztyn)
+  --socz-fg-warning-secondary: #{$socz-danger-400};  // Foreground/fg-warning-secondary
+  --socz-fg-success-primary: #{$socz-success-600}; // Foreground/fg-success-primary
+  --socz-fg-success-secondary: #{$socz-success-400}; // Foreground/fg-success-secondary
+}
+
+@include color-mode(dark) {
+  --socz-fg-primary: #{$socz-gray-100};
+  --socz-fg-secondary: #{$socz-gray-300};
+  --socz-fg-secondary-hover: #{$socz-gray-400};
+  --socz-fg-brand-primary: #{$socz-primary-100};
+  --socz-fg-brand-primary-alt: #{$socz-primary-200};
+  --socz-fg-brand-secondary: #{$socz-primary-300};
+  --socz-fg-brand-secondary-hover: #{$socz-primary-400};
+  --socz-fg-error-primary: #{$socz-error-300};
+  --socz-fg-warning-primary: #{$socz-danger-300};
+  --socz-fg-success-primary: #{$socz-success-300};
+}

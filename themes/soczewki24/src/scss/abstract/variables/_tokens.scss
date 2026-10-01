@@ -1,0 +1,297 @@
+﻿// =====================================================================
+// PRIMITIVES
+// =====================================================================
+
+// --- Primary (bursztyn) -----------------------------------------------
+$socz-primary-50:       #fffaeb !default;
+$socz-primary-100:      #fff1c6 !default;
+$socz-primary-200:      #fee289 !default;
+$socz-primary-300:      #fecd4b !default;
+$socz-primary-400:      #feb821 !default;
+$socz-primary-500:      #f8970b !default;
+$socz-primary-600:      #dc6f03 !default;
+$socz-primary-700:      #b64c07 !default;
+$socz-primary-800:      #943a0c !default;
+$socz-primary-900:      #79310e !default;
+$socz-primary-950:      #461702 !default;
+
+// --- Gray (neutralne) -------------------------------------------------
+$socz-gray-50:          #f9fafb !default;
+$socz-gray-100:         #f3f4f6 !default;
+$socz-gray-200:         #e5e7eb !default;
+$socz-gray-300:         #d1d5dc !default;
+$socz-gray-400:         #99a1af !default;
+$socz-gray-500:         #6a7282 !default;
+$socz-gray-600:         #4a5565 !default;
+$socz-gray-700:         #364153 !default;
+$socz-gray-800:         #1e2939 !default;
+$socz-gray-900:         #101828 !default;
+$socz-gray-950:         #030712 !default;
+
+$socz-white:            #fff !default;
+$socz-black:            #000 !default;
+
+// --- Error (czerwony) -------------------------------------------------
+$socz-error-50:         #fef2f2 !default;
+$socz-error-100:        #ffe2e2 !default;
+$socz-error-200:        #ffc9c9 !default;
+$socz-error-300:        #ffa2a2 !default;
+$socz-error-400:        #ff6467 !default;
+$socz-error-500:        #fb2c36 !default;
+$socz-error-600:        #e7000b !default;
+$socz-error-700:        #c10007 !default;
+$socz-error-800:        #9f0712 !default;
+$socz-error-900:        #82181a !default;
+$socz-error-950:        #460809 !default;
+
+// --- Danger (bursztyn) ------------------------------------------------
+$socz-danger-50:        #fffbeb !default;
+$socz-danger-100:       #fef3c6 !default;
+$socz-danger-200:       #fee685 !default;
+$socz-danger-300:       #ffd230 !default;
+$socz-danger-400:       #ffb900 !default;
+$socz-danger-500:       #fe9a00 !default;
+$socz-danger-600:       #e17100 !default;
+$socz-danger-700:       #bb4d00 !default;
+$socz-danger-800:       #973c00 !default;
+$socz-danger-900:       #7b3306 !default;
+$socz-danger-950:       #461901 !default;
+
+// --- Success (zielony) ------------------------------------------------
+$socz-success-50:       #f0fdf4 !default;
+$socz-success-100:      #dcfce7 !default;
+$socz-success-200:      #b9f8cf !default;
+$socz-success-300:      #7bf1a8 !default;
+$socz-success-400:      #05df72 !default;
+$socz-success-500:      #00c950 !default;
+$socz-success-600:      #00a63e !default;
+$socz-success-700:      #008236 !default;
+$socz-success-800:      #016630 !default;
+$socz-success-900:      #0d542b !default;
+$socz-success-950:      #032e15 !default;
+
+// --- Info -------------------------------------------------------------
+$socz-blue-500:         #1570ef !default;
+
+// --- Marka ------------------------------------------------------------
+$socz-color-brand:          $socz-primary-500 !default;  // tlo przyciskow, akcenty
+$socz-color-brand-hover:    $socz-primary-600 !default;
+$socz-color-brand-active:   $socz-primary-700 !default;
+$socz-color-brand-subtle:   $socz-primary-50 !default;   // tla sekcji, badge
+$socz-color-brand-border:   $socz-primary-200 !default;
+$socz-color-brand-text:     $socz-primary-700 !default;  // tekst/link na bialym, AA
+$socz-color-on-brand:       $socz-gray-900 !default;     // tekst NA kolorze marki
+
+// --- Tekst ------------------------------------------------------------
+$socz-color-text:           $socz-gray-900 !default;     // 17.75:1 na bieli
+$socz-color-text-muted:     $socz-gray-500 !default;     // 4.84:1 na bieli, AA
+$socz-color-text-inverse:   $socz-white !default;
+$socz-color-text-disabled:  $socz-gray-400 !default;
+
+// --- Powierzchnie i obramowania ---------------------------------------
+$socz-color-surface:        $socz-white !default;
+$socz-color-surface-subtle: $socz-gray-50 !default;
+$socz-color-surface-muted:  $socz-gray-100 !default;
+$socz-color-border:         $socz-gray-200 !default;
+$socz-color-border-strong:  $socz-gray-300 !default;
+
+// --- Status: blad (skala Error) ---------------------------------------
+$socz-color-danger:          $socz-error-600 !default;    // tlo, 4.77:1 z biala trescia
+$socz-color-danger-hover:    $socz-error-700 !default;
+$socz-color-danger-text:     $socz-error-700 !default;    // 6.42:1 na bieli, 5.87:1 na danger-subtle
+$socz-color-danger-subtle:   $socz-error-50 !default;
+$socz-color-danger-border:   $socz-error-200 !default;
+$socz-color-on-danger:       $socz-white !default;
+
+// --- Status: ostrzezenie (skala Danger z Figmy) -----------------------
+$socz-color-warning:         $socz-danger-500 !default;
+$socz-color-warning-hover:   $socz-danger-600 !default;
+$socz-color-warning-text:    $socz-danger-700 !default;   // 5.03:1 na bieli, 4.85:1 na warning-subtle
+$socz-color-warning-subtle:  $socz-danger-50 !default;
+$socz-color-warning-border:  $socz-danger-200 !default;
+$socz-color-on-warning:      $socz-gray-900 !default;     // 8.31:1
+
+// --- Status: sukces ---------------------------------------------------
+$socz-color-success:         $socz-success-700 !default;  // tlo, 4.95:1 z biala trescia
+$socz-color-success-hover:   $socz-success-800 !default;
+$socz-color-success-text:    $socz-success-700 !default;  // 4.95:1 na bieli, 4.72:1 na success-subtle
+$socz-color-success-subtle:  $socz-success-50 !default;
+$socz-color-success-border:  $socz-success-200 !default;
+$socz-color-on-success:      $socz-white !default;
+
+// --- Status: informacja -----------------------------------------------
+$socz-color-info:            $socz-blue-500 !default;
+
+// --- Typografia -------------------------------------------------------
+$socz-font-body:        "Satoshi", sans-serif !default;
+$socz-font-heading:     "Mona Sans", sans-serif !default;
+
+// --- Skala tekstu body (Figma type scale) -------------------------------
+$socz-fs-body-xs:       0.75rem !default;   // 12px - Extra Small
+$socz-fs-body-sm:       0.875rem !default;  // 14px - Small
+$socz-fs-body-base:     1rem !default;      // 16px - Regular
+$socz-fs-body-md:       1.125rem !default;  // 18px - Medium
+$socz-fs-body-lg:       1.25rem !default;   // 20px - Large
+
+$socz-lh-tight:         1.2 !default;   // 120% - naglowki
+$socz-lh-snug:          1.4 !default;   // 140% - body sm/xs
+$socz-lh-base:          1.5 !default;   // 150% - body lg/md/regular
+
+$socz-ls-body:          -0.01em !default;   // -1%, cala skala body
+
+// --- Skala naglowkow (Figma type scale) ---------------------------------
+$socz-fs-h1:            2.25rem !default;   // 36px
+$socz-fs-h2:            2rem !default;      // 32px
+$socz-fs-h3:            1.5rem !default;    // 24px
+$socz-fs-h4:            1.25rem !default;   // 20px
+$socz-fs-h5:            1.125rem !default;  // 18px
+$socz-fs-h6:            1rem !default;      // 16px
+
+// Desktop - od $socz-heading-breakpoint w gore (patrz _global.scss)
+$socz-fs-h1-lg:         3.75rem !default;   // 60px
+$socz-fs-h2-lg:         3rem !default;      // 48px
+$socz-fs-h3-lg:         2.5rem !default;    // 40px
+$socz-fs-h4-lg:         2rem !default;      // 32px
+$socz-fs-h5-lg:         1.5rem !default;    // 24px
+$socz-fs-h6-lg:         1.25rem !default;   // 20px
+
+$socz-fw-heading:       600 !default;
+$socz-ls-heading:       -0.02em !default;
+
+// --- Spacing (odstepy w obrebie jednej sekcji, np. naglowek i akapit) --
+$socz-spacing-0:        0 !default;        // 0px
+$socz-spacing-0-5:      0.125rem !default; // 2px
+$socz-spacing-1:        0.25rem !default;  // 4px
+$socz-spacing-2:        0.5rem !default;   // 8px
+$socz-spacing-3:        0.75rem !default;  // 12px
+$socz-spacing-4:        1rem !default;     // 16px
+$socz-spacing-5:        1.25rem !default;  // 20px
+$socz-spacing-6:        1.5rem !default;   // 24px
+$socz-spacing-7:        1.75rem !default;  // 28px
+$socz-spacing-8:        2rem !default;     // 32px
+$socz-spacing-9:        2.25rem !default;  // 36px
+$socz-spacing-10:       2.5rem !default;   // 40px
+$socz-spacing-11:       2.75rem !default;  // 44px
+$socz-spacing-12:       3rem !default;     // 48px
+$socz-spacing-13:       3.625rem !default; // 58px
+$socz-spacing-14:       4rem !default;     // 64px
+
+// --- Sizing (paddingi i marginesy dla wiekszych elementow, np. sekcji) -
+$socz-sizing-0-5:       0.5rem !default; // 8px
+$socz-sizing-1:         1rem !default;   // 16px
+$socz-sizing-2:         2rem !default;   // 32px
+$socz-sizing-3:         3rem !default;   // 48px
+$socz-sizing-4:         4rem !default;   // 64px
+$socz-sizing-5:         6rem !default;   // 96px
+$socz-sizing-6:         8rem !default;   // 128px
+$socz-sizing-7:         10rem !default;  // 160px
+$socz-sizing-8:         12rem !default;  // 192px
+$socz-sizing-9:         14rem !default;  // 224px
+$socz-sizing-10:        16rem !default;  // 256px
+
+
+// --- Buttons ------------------------------------------------------------
+$socz-btn-tertiary-color:      $socz-gray-900 !default;
+$socz-btn-tertiary-border:     $socz-gray-300 !default;
+$socz-btn-tertiary-hover-bg:   $socz-gray-50 !default;
+
+$socz-btn-sizes: (
+  "xs": (
+    "padding-y": $socz-spacing-2,
+    "padding-x": $socz-spacing-4,
+    "font-size": $socz-fs-body-sm,
+  ),
+  "sm": (
+    "padding-y": $socz-spacing-2,
+    "padding-x": $socz-spacing-4,
+    "font-size": $socz-fs-body-base,
+  ),
+  "md": (
+    "padding-y": 10px,
+    "padding-x": $socz-spacing-5,
+    "font-size": $socz-fs-body-base,
+  ),
+) !default;
+
+// --- Inputs --------------------------------------------------------------
+$socz-input-sizes: (
+  "xs": (
+    "padding-y": $socz-spacing-2,
+    "padding-x": $socz-spacing-3,
+    "font-size": $socz-fs-body-sm,
+  ),
+  "sm": (
+    "padding-y": $socz-spacing-2,
+    "padding-x": $socz-spacing-3,
+    "font-size": $socz-fs-body-base,
+  ),
+  "md": (
+    "padding-y": 10px,
+    "padding-x": $socz-spacing-3,
+    "font-size": $socz-fs-body-base,
+  ),
+) !default;
+
+// --- Promienie i cienie -----------------------------------------------
+$socz-radius-xxs:       2px !default;
+$socz-radius-xs:        4px !default;
+$socz-radius-s:         8px !default;
+$socz-radius-md:        12px !default;
+$socz-radius-lg:        16px !default;
+$socz-radius-xl:        20px !default;
+$socz-radius-2xl:       24px !default;
+$socz-radius-3xl:       32px !default;
+$socz-radius-pill:      999px !default;
+
+$socz-shadow-color:     #0a0d12 !default;
+
+$socz-shadow-xs:        0 2px 4px 0 rgba($socz-shadow-color, 0.05) !default;
+$socz-shadow-sm:        0 4px 8px 0 rgba($socz-shadow-color, 0.1) !default;
+$socz-shadow-md:        0 8px 16px -2px rgba($socz-shadow-color, 0.1) !default;
+$socz-shadow-lg:        0 16px 24px 0 rgba($socz-shadow-color, 0.12) !default;
+$socz-shadow-xl:        0 24px 48px 0 rgba($socz-shadow-color, 0.1) !default;
+$socz-shadow-2xl:       0 32px 64px 0 rgba($socz-shadow-color, 0.18) !default;
+
+
+// =====================================================================
+// 3. MOST DO BOOTSTRAPA 5.3
+// Dzieki temu komponenty Bootstrapa i Hummingbirda same przejmuja
+// wyglad z Figmy, bez przepisywania kazdego z osobna.
+//
+// UWAGA: czesc tych zmiennych Hummingbird przypisuje twardo (bez
+// !default) w bootstrap/overrides/variables/_variables.scss, ktory
+// kompiluje sie PO tym pliku. Dotyczy to $primary, $danger,
+// $border-radius i $font-family-base - tam wartosc stad przegrywa.
+// Do przepiecia osobna zmiana.
+// =====================================================================
+
+$white:                 $socz-white !default;
+$black:                 $socz-black !default;
+
+$primary:               $socz-color-brand !default;
+$secondary:             $socz-gray-900 !default;
+$success:               $socz-color-success !default;
+$warning:               $socz-color-warning !default;
+$danger:                $socz-color-danger !default;
+$info:                  $socz-color-info !default;
+
+$body-color:            $socz-color-text !default;
+$body-bg:               $socz-color-surface !default;
+$border-color:          $socz-color-border !default;
+$link-color:            $socz-color-brand-text !default;
+
+$font-family-sans-serif: $socz-font-body !default;
+$font-size-base:         $socz-fs-body-base !default;
+$line-height-base:       $socz-lh-base !default;
+$headings-font-family:   $socz-font-heading !default;
+$headings-line-height:   $socz-lh-tight !default;
+
+$border-radius:          $socz-radius-s !default;
+$border-radius-sm:       $socz-radius-xs !default;
+$border-radius-lg:       $socz-radius-lg !default;
+$border-radius-pill:     $socz-radius-pill !default;
+
+$box-shadow-sm:          $socz-shadow-sm !default;
+$box-shadow:             $socz-shadow-md !default;
+$box-shadow-lg:          $socz-shadow-lg !default;
+

@@ -1,0 +1,51 @@
+@use "sass:map";
+
+$md: map.get($grid-breakpoints, "md");
+
+#SectionCarusel{
+  background-color: $socz-gray-50;
+  padding-top: 80px;
+  padding-bottom: 80px;
+
+  @media (max-width: $md) {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+  
+    .top{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 16px;
+        align-items: center;
+
+        h5{
+            margin-bottom: 0px;
+        }
+
+         a {
+      width: 146px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      &:hover {
+        span {
+          color: var(--socz-bg-primary-solid-hover);
+        }
+      }
+
+      img {
+        width: 15.63px;
+        height: 13.13px;
+      }
+
+      span {
+        color: var(--socz-bg-primary-solid);
+        font-weight: 700;
+        line-height: $socz-lh-base;
+        letter-spacing: $socz-ls-body;
+      }
+    }
+    }
+}

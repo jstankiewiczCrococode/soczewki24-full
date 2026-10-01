@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<module>
+    <name>croco_soczewki</name>
+    <displayName><![CDATA[Soczewki24 - modul projektowy]]></displayName>
+    <version><![CDATA[1.0.0]]></version>
+    <description><![CDATA[Logika projektowa sklepu Soczewki24.]]></description>
+    <author><![CDATA[CrocoCode]]></author>
+    <tab><![CDATA[front_office_features]]></tab>
+	<confirmUninstall><![CDATA[Na pewno? Usuniete zostana ustawienia modulu.]]></confirmUninstall>
+    <is_configurable>0</is_configurable>
+    <need_instance>0</need_instance>
+</module>

@@ -1,0 +1,419 @@
+{
+  "moc": {
+    "name": "Moc (SPH)",
+    "placeholder": "Wybierz moc soczewek...",
+    "options": [
+      {
+        "value": "-12.00",
+        "label": "-12.00",
+        "group": "Minusy (krótkowzroczność)"
+      },
+      {
+        "value": "-11.50",
+        "label": "-11.50",
+        "group": "Minusy (krótkowzroczność)"
+      },
+      {
+        "value": "-11.00",
+        "label": "-11.00",
+        "group": "Minusy (krótkowzroczność)"
+      },
+      {
+        "value": "-10.50",
+        "label": "-10.50",
+        "group": "Minusy (krótkowzroczność)"
+      },
+      {
+        "value": "-10.00",
+        "label": "-10.00",
+        "group": "Minusy (krótkowzroczność)"
+      },
+      {
+        "value": "-9.50",
+        "label": "-9.50",
+        "group": "Minusy (krótkowzroczność)"
+      },
+      {
+        "value": "-9.00",
+        "label": "-9.00",
+        "group": "Minusy (krótkowzroczność)"
+      },
+      {
+        "value": "-8.50",
+        "label": "-8.50",
+        "group": "Minusy (krótkowzroczność)"
+      },
+      {
+        "value": "-8.00",
+        "label": "-8.00",
+        "group": "Minusy (krótkowzroczność)"
+      },
+      {
+        "value": "-7.50",
+        "label": "-7.50",
+        "group": "Minusy (krótkowzroczność)"
+      },
+      {
+        "value": "-7.00",
+        "label": "-7.00",
+        "group": "Minusy (krótkowzroczność)"
+      },
+      {
+        "value": "-6.50",
+        "label": "-6.50",
+        "group": "Minusy (krótkowzroczność)"
+      },
+      {
+        "value": "-6.00",
+        "label": "-6.00",
+        "group": "Minusy (krótkowzroczność)"
+      },
+      {
+        "value": "-5.75",
+        "label": "-5.75",
+        "group": "Minusy (krótkowzroczność)"
+      },
+      {
+        "value": "-5.50",
+        "label": "-5.50",
+        "group": "Minusy (krótkowzroczność)"
+      },
+      {
+        "value": "-5.25",
+        "label": "-5.25",
+        "group": "Minusy (krótkowzroczność)"
+      },
+      {
+        "value": "-5.00",
+        "label": "-5.00",
+        "group": "Minusy (krótkowzroczność)"
+      },
+      {
+        "value": "-4.75",
+        "label": "-4.75",
+        "group": "Minusy (krótkowzroczność)"
+      },
+      {
+        "value": "-4.50",
+        "label": "-4.50",
+        "group": "Minusy (krótkowzroczność)"
+      },
+      {
+        "value": "-4.25",
+        "label": "-4.25",
+        "group": "Minusy (krótkowzroczność)"
+      },
+      {
+        "value": "-4.00",
+        "label": "-4.00",
+        "group": "Minusy (krótkowzroczność)"
+      },
+      {
+        "value": "-3.75",
+        "label": "-3.75",
+        "group": "Minusy (krótkowzroczność)"
+      },
+      {
+        "value": "-3.50",
+        "label": "-3.50",
+        "group": "Minusy (krótkowzroczność)"
+      },
+      {
+        "value": "-3.25",
+        "label": "-3.25",
+        "group": "Minusy (krótkowzroczność)"
+      },
+      {
+        "value": "-3.00",
+        "label": "-3.00",
+        "group": "Minusy (krótkowzroczność)"
+      },
+      {
+        "value": "-2.75",
+        "label": "-2.75",
+        "group": "Minusy (krótkowzroczność)"
+      },
+      {
+        "value": "-2.50",
+        "label": "-2.50",
+        "group": "Minusy (krótkowzroczność)"
+      },
+      {
+        "value": "-2.25",
+        "label": "-2.25",
+        "group": "Minusy (krótkowzroczność)"
+      },
+      {
+        "value": "-2.00",
+        "label": "-2.00",
+        "group": "Minusy (krótkowzroczność)"
+      },
+      {
+        "value": "-1.75",
+        "label": "-1.75",
+        "group": "Minusy (krótkowzroczność)"
+      },
+      {
+        "value": "-1.50",
+        "label": "-1.50",
+        "group": "Minusy (krótkowzroczność)"
+      },
+      {
+        "value": "-1.25",
+        "label": "-1.25",
+        "group": "Minusy (krótkowzroczność)"
+      },
+      {
+        "value": "-1.00",
+        "label": "-1.00",
+        "group": "Minusy (krótkowzroczność)"
+      },
+      {
+        "value": "-0.75",
+        "label": "-0.75",
+        "group": "Minusy (krótkowzroczność)"
+      },
+      {
+        "value": "-0.50",
+        "label": "-0.50",
+        "group": "Minusy (krótkowzroczność)"
+      },
+      {
+        "value": "-0.25",
+        "label": "-0.25",
+        "group": "Minusy (krótkowzroczność)"
+      },
+      {
+        "value": "0.00",
+        "label": "0.00 (plano / zerówka)",
+        "group": "Zero"
+      },
+      {
+        "value": "+0.25",
+        "label": "+0.25",
+        "group": "Plusy (nadwzroczność)"
+      },
+      {
+        "value": "+0.50",
+        "label": "+0.50",
+        "group": "Plusy (nadwzroczność)"
+      },
+      {
+        "value": "+0.75",
+        "label": "+0.75",
+        "group": "Plusy (nadwzroczność)"
+      },
+      {
+        "value": "+1.00",
+        "label": "+1.00",
+        "group": "Plusy (nadwzroczność)"
+      },
+      {
+        "value": "+1.25",
+        "label": "+1.25",
+        "group": "Plusy (nadwzroczność)"
+      },
+      {
+        "value": "+1.50",
+        "label": "+1.50",
+        "group": "Plusy (nadwzroczność)"
+      },
+      {
+        "value": "+1.75",
+        "label": "+1.75",
+        "group": "Plusy (nadwzroczność)"
+      },
+      {
+        "value": "+2.00",
+        "label": "+2.00",
+        "group": "Plusy (nadwzroczność)"
+      },
+      {
+        "value": "+2.25",
+        "label": "+2.25",
+        "group": "Plusy (nadwzroczność)"
+      },
+      {
+        "value": "+2.50",
+        "label": "+2.50",
+        "group": "Plusy (nadwzroczność)"
+      },
+      {
+        "value": "+2.75",
+        "label": "+2.75",
+        "group": "Plusy (nadwzroczność)"
+      },
+      {
+        "value": "+3.00",
+        "label": "+3.00",
+        "group": "Plusy (nadwzroczność)"
+      },
+      {
+        "value": "+3.25",
+        "label": "+3.25",
+        "group": "Plusy (nadwzroczność)"
+      },
+      {
+        "value": "+3.50",
+        "label": "+3.50",
+        "group": "Plusy (nadwzroczność)"
+      },
+      {
+        "value": "+3.75",
+        "label": "+3.75",
+        "group": "Plusy (nadwzroczność)"
+      },
+      {
+        "value": "+4.00",
+        "label": "+4.00",
+        "group": "Plusy (nadwzroczność)"
+      },
+      {
+        "value": "+4.25",
+        "label": "+4.25",
+        "group": "Plusy (nadwzroczność)"
+      },
+      {
+        "value": "+4.50",
+        "label": "+4.50",
+        "group": "Plusy (nadwzroczność)"
+      },
+      {
+        "value": "+4.75",
+        "label": "+4.75",
+        "group": "Plusy (nadwzroczność)"
+      },
+      {
+        "value": "+5.00",
+        "label": "+5.00",
+        "group": "Plusy (nadwzroczność)"
+      },
+      {
+        "value": "+5.25",
+        "label": "+5.25",
+        "group": "Plusy (nadwzroczność)"
+      },
+      {
+        "value": "+5.50",
+        "label": "+5.50",
+        "group": "Plusy (nadwzroczność)"
+      },
+      {
+        "value": "+5.75",
+        "label": "+5.75",
+        "group": "Plusy (nadwzroczność)"
+      },
+      {
+        "value": "+6.00",
+        "label": "+6.00",
+        "group": "Plusy (nadwzroczność)"
+      },
+      {
+        "value": "+6.50",
+        "label": "+6.50",
+        "group": "Plusy (nadwzroczność)"
+      },
+      {
+        "value": "+7.00",
+        "label": "+7.00",
+        "group": "Plusy (nadwzroczność)"
+      },
+      {
+        "value": "+7.50",
+        "label": "+7.50",
+        "group": "Plusy (nadwzroczność)"
+      },
+      {
+        "value": "+8.00",
+        "label": "+8.00",
+        "group": "Plusy (nadwzroczność)"
+      }
+    ]
+  },
+  "krzywizna": {
+    "name": "Krzywizna (BC)",
+    "placeholder": "Wybierz krzywiznę soczewek...",
+    "options": [
+      {
+        "value": "8.30",
+        "label": "8.3 mm"
+      },
+      {
+        "value": "8.40",
+        "label": "8.4 mm"
+      },
+      {
+        "value": "8.50",
+        "label": "8.5 mm"
+      },
+      {
+        "value": "8.60",
+        "label": "8.6 mm"
+      },
+      {
+        "value": "8.70",
+        "label": "8.7 mm"
+      },
+      {
+        "value": "8.80",
+        "label": "8.8 mm"
+      },
+      {
+        "value": "8.90",
+        "label": "8.9 mm"
+      },
+      {
+        "value": "9.00",
+        "label": "9.0 mm"
+      }
+    ]
+  },
+  "tryb_wymiany": {
+    "name": "Tryb wymiany soczewki",
+    "placeholder": "Wybierz tryb wymiany...",
+    "options": [
+      {
+        "value": "1day",
+        "label": "Jednodniowe"
+      },
+      {
+        "value": "2weeks",
+        "label": "Dwutygodniowe"
+      },
+      {
+        "value": "1month",
+        "label": "Miesięczne"
+      },
+      {
+        "value": "1year",
+        "label": "Roczne"
+      }
+    ]
+  },
+  "typ_korekcji": {
+    "name": "Typ korekcji",
+    "placeholder": "Wybierz typ korekcji...",
+    "options": [
+      {
+        "value": "sph",
+        "label": "Sferyczne (krótko- i nadwzroczność)"
+      },
+      {
+        "value": "toric",
+        "label": "Toryczne (astygmatyzm)"
+      },
+      {
+        "value": "multifocal",
+        "label": "Multifokalne (progresywne)"
+      },
+      {
+        "value": "toric_multifocal",
+        "label": "Toryczne multifokalne"
+      },
+      {
+        "value": "colored",
+        "label": "Kolorowe"
+      }
+    ]
+  }
+}

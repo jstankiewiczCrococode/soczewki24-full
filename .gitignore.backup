@@ -1,0 +1,67 @@
+# =====================================================================
+# Strategia: core Presty NIE jest w repo. Domyslnie ignorujemy wszystko,
+# whitelistujemy tylko nasz kod. Dzieki temu podniesienie wersji Presty
+# to podmiana obrazu / paczki, a nie diff na 30 tysiacach plikow.
+# =====================================================================
+
+/*
+
+# --- infrastruktura projektu ---
+!/.gitignore
+!/.editorconfig
+!/README.md
+!/CLAUDE.md
+!/Makefile
+!/docker-compose.yml
+!/.env.example
+!/docker/
+!/bin/
+!/docs/
+!/.github/
+
+# --- nasz motyw ---
+!/themes/
+/themes/*
+!/themes/soczewki24/
+
+# --- nasze moduly (prefix croco_) ---
+!/modules/
+/modules/*
+!/modules/croco_*/
+
+# --- override: unikamy, ale jak juz musi byc to wersjonowany ---
+!/override/
+
+# =====================================================================
+# Artefakty wewnatrz whitelistowanych katalogow
+# =====================================================================
+
+# Buildy assetow leca z CI, nie z repo
+/themes/soczewki24/assets/
+/themes/soczewki24/node_modules/
+/themes/soczewki24/storybook-static/
+/themes/soczewki24/webpack/.env
+
+node_modules/
+vendor/
+
+# Sekrety i konfiguracja lokalna
+.env
+.env.local
+/docker/data/
+/bin/*.sql
+/bin/*.sql.gz
+
+# Smieci
+.DS_Store
+Thumbs.db
+*.log
+.idea/
+.vscode/
+!.vscode/extensions.json
+
+# --- pliki projektu wysylane razem z wdrozeniem ---
+!/prestashop_local.sql
+!/prettyblocks.tar.gz
+!/feed.xml
+!/theme-local-hashes.csv

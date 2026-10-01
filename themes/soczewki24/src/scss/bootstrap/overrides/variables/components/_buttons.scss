@@ -1,0 +1,15 @@
+﻿@use "sass:map";
+
+$btn-padding-y:    map.get($socz-btn-sizes, "md", "padding-y");
+$btn-padding-x:    map.get($socz-btn-sizes, "md", "padding-x");
+$btn-font-size:    map.get($socz-btn-sizes, "md", "font-size");
+
+$btn-padding-y-sm: map.get($socz-btn-sizes, "sm", "padding-y");
+$btn-padding-x-sm: map.get($socz-btn-sizes, "sm", "padding-x");
+$btn-font-size-sm: map.get($socz-btn-sizes, "sm", "font-size");
+
+// Zachowane ustawienie z Twojego projektu.
+$btn-border-radius: 0.25rem;
+$btn-border-radius-sm: 0.25rem;
+
+$btn-font-weight: 700;

@@ -1,0 +1,62 @@
+:root {
+  --socz-bg-primary: #{$socz-white};    // Background/bg-primary
+  --socz-bg-primary-alt: #{$socz-gray-50};  // Background/bg-primary-alt
+  --socz-bg-primary-hover: #{$socz-gray-50};  // Background/bg-primary-hoover
+  --socz-bg-primary-solid: #{$socz-gray-900}; // Background/bg-primary-solid
+  --socz-bg-primary-solid-alt: #{$socz-gray-800}; // Background/bg-primary-solid-alt
+  --socz-bg-primary-solid-hover: #{$socz-gray-950}; // Background/bg-primary-solid_hoover
+  --socz-bg-secondary: #{$socz-gray-50};  // Background/bg-secondary
+  --socz-bg-tertiary: #{$socz-gray-100}; // Background/bg-tertiary
+  --socz-bg-overlay: #{$socz-black};    // Background/bg-overlay
+
+  --socz-bg-brand-primary: #{$socz-primary-50};  // Background/bg-brand-primary
+  --socz-bg-brand-primary-hover: #{$socz-primary-100}; // Background/bg-brand-primary_hoover
+  --socz-bg-brand-secondary: #{$socz-primary-100}; // Background/bg-brand-secondary
+  --socz-bg-brand-solid: #{$socz-primary-600}; // Background/bg-brand-solid
+  --socz-bg-brand-solid-hover: #{$socz-primary-700}; // Background/bg-brand-solid_hoover
+
+  --socz-bg-error-primary: #{$socz-error-100}; // Background/bg-error-primary
+  --socz-bg-error-primary-hover: #{$socz-error-200}; // Background/bg-error-primary-hoover
+  --socz-bg-error-secondary: #{$socz-error-300}; // Background/bg-error-secondary
+  --socz-bg-error-solid: #{$socz-error-600}; // Background/bg-error-solid
+  --socz-bg-error-solid-hover: #{$socz-error-700}; // Background/bg-error-solid_hoover
+
+  --socz-bg-success-primary: #{$socz-success-50};  // Background/bg-success-primary
+  --socz-bg-success-secondary: #{$socz-success-100}; // Background/bg-success-secondary
+  --socz-bg-success-solid: #{$socz-success-600}; // Background/bg-success-solid
+
+  --socz-bg-warning-primary: #{$socz-danger-50};  // Background/bg-warning-primary
+  --socz-bg-warning-secondary: #{$socz-danger-100}; // Background/bg-warning-secondary
+  --socz-bg-warning-solid: #{$socz-danger-600}; // Background/bg-warning-solid
+}
+
+@include color-mode(dark) {
+  --socz-bg-primary: #{$socz-gray-950};
+  --socz-bg-primary-alt: #{$socz-gray-900};
+  --socz-bg-primary-hover: #{$socz-gray-900};
+  --socz-bg-primary-solid: #{$socz-gray-50};
+  --socz-bg-primary-solid-alt: #{$socz-gray-100};
+  --socz-bg-primary-solid-hover: #{$socz-gray-200};
+  --socz-bg-secondary: #{$socz-gray-900};
+  --socz-bg-tertiary: #{$socz-gray-800};
+
+  --socz-bg-brand-primary: #{$socz-primary-900};
+  --socz-bg-brand-primary-hover: #{$socz-primary-950};
+  --socz-bg-brand-secondary: #{$socz-primary-800};
+  --socz-bg-brand-solid: #{$socz-primary-400};
+  --socz-bg-brand-solid-hover: #{$socz-primary-500};
+
+  --socz-bg-error-primary: #{$socz-error-900};
+  --socz-bg-error-primary-hover: #{$socz-error-950};
+  --socz-bg-error-secondary: #{$socz-error-800};
+  --socz-bg-error-solid: #{$socz-error-200};
+  --socz-bg-error-solid-hover: #{$socz-error-300};
+
+  --socz-bg-success-primary: #{$socz-success-950};
+  --socz-bg-success-secondary: #{$socz-success-900};
+  --socz-bg-success-solid: #{$socz-success-200};
+
+  --socz-bg-warning-primary: #{$socz-danger-950};
+  --socz-bg-warning-secondary: #{$socz-danger-900};
+  --socz-bg-warning-solid: #{$socz-danger-200};
+}

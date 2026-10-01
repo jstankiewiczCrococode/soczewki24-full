@@ -1,0 +1,33 @@
+// Rozszerzenie mapy $spacers Bootstrapa o pelne skale spacing i sizing
+// czyli uzywamy np. class="m-spacing-1" lub class="p-sizing-2"
+$spacers: map-merge(
+  $spacers,
+  (
+    "spacing-0-5": $socz-spacing-0-5,
+    "spacing-1": $socz-spacing-1,
+    "spacing-2": $socz-spacing-2,
+    "spacing-3": $socz-spacing-3,
+    "spacing-4": $socz-spacing-4,
+    "spacing-5": $socz-spacing-5,
+    "spacing-6": $socz-spacing-6,
+    "spacing-7": $socz-spacing-7,
+    "spacing-8": $socz-spacing-8,
+    "spacing-9": $socz-spacing-9,
+    "spacing-10": $socz-spacing-10,
+    "spacing-11": $socz-spacing-11,
+    "spacing-12": $socz-spacing-12,
+    "spacing-13": $socz-spacing-13,
+    "spacing-14": $socz-spacing-14,
+    "sizing-0-5": $socz-sizing-0-5,
+    "sizing-1": $socz-sizing-1,
+    "sizing-2": $socz-sizing-2,
+    "sizing-3": $socz-sizing-3,
+    "sizing-4": $socz-sizing-4,
+    "sizing-5": $socz-sizing-5,
+    "sizing-6": $socz-sizing-6,
+    "sizing-7": $socz-sizing-7,
+    "sizing-8": $socz-sizing-8,
+    "sizing-9": $socz-sizing-9,
+    "sizing-10": $socz-sizing-10,
+  )
+);

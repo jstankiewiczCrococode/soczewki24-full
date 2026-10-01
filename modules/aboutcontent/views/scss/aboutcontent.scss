@@ -1,0 +1,76 @@
+﻿@use "../../../../themes/soczewki24/src/scss/abstract/variables/tokens" as *;
+
+#about {
+display: flex;
+gap: 32px;
+padding-top: 112px;
+padding-bottom: 112px;
+background-color: $socz-gray-50;
+
+@media (max-width: 768px) { 
+  flex-direction: column;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+
+.container{
+  display: flex;
+  gap: 32px;
+  align-items: center;
+
+  @media (max-width: 1200px) { 
+    flex-direction: column;
+  }
+}
+
+.content{
+  height: fit-content;
+}
+
+
+img, .content{
+  flex: 1;
+
+  @media (max-width: 1280px) { 
+    flex: auto;
+  }
+}
+
+h3{
+  margin-bottom: 24px;
+
+  @media (max-width: 768px) { 
+    margin-bottom: 16px;
+  }
+}
+
+  img{
+    height: 640px;
+    object-fit: cover;
+
+    @media (max-width: 1200px) { 
+        width: 100%;
+    }
+
+    @media (max-width: 768px) {       
+      height: 350px;
+    }
+  }
+
+
+  .cols{
+    display: flex;
+    gap: 16px;
+    margin-top: 24px;
+
+    @media (max-width: 768px) { 
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .col{
+      flex: 1;
+    }
+  }
+}

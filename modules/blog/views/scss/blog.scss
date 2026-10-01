@@ -1,0 +1,73 @@
+@use "sass:map";
+@use "../../../../themes/soczewki24/src/scss/abstract/variables/tokens" as *;
+
+
+// Breakpoints
+$grid-breakpoints: (
+  "xxs": 0,
+  "xs": 360px,
+  "sm": 576px,
+  "md": 768px,
+  "lg": 992px,
+  "xl": 1200px,
+  "xxl": 1400px,
+);
+
+$md: map.get($grid-breakpoints, "md");
+
+
+.blog-section {
+  background-color: $socz-gray-50;
+  padding-top: 80px;
+
+  padding-bottom: 80px;
+
+
+  @media (max-width: $md) {
+    padding-top: 40px;
+    padding-right: 16px;
+    padding-bottom: 40px;
+    padding-left: 16px;
+
+    .container{
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+  }
+
+  .blog-section-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h3 {
+      width: auto;
+      margin-bottom: 0px;
+    }
+
+    a {
+      width: 146px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      &:hover {
+        span {
+          color: var(--socz-bg-primary-solid-hover);
+        }
+      }
+
+      img {
+        width: 15.63px;
+        height: 13.13px;
+      }
+
+      span {
+        color: var(--socz-bg-primary-solid);
+        font-weight: 700;
+        line-height: $socz-lh-base;
+        letter-spacing: $socz-ls-body;
+      }
+    }
+  }
+}

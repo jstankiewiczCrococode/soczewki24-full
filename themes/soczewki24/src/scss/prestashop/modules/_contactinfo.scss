@@ -1,0 +1,267 @@
+$component-name: ps-contactinfo;
+
+#header {
+  .#{$component-name} {
+    a {
+      color: var(--bs-body-color);
+
+      &:hover {
+        color: var(--bs-link-hover-color);
+      }
+    }
+  }
+}
+
+#footer {
+  background: white;
+  padding-top: 80px;
+
+  padding-bottom: 80px;
+ 
+  gap: 80px;
+
+
+  @include media-breakpoint-down(md) {
+    padding-top: 40px;
+   
+    padding-bottom: 40px;
+  
+  }
+
+  .newsletter{
+    display: flex;
+    justify-content: space-between;
+
+    @include media-breakpoint-down(md) {
+      flex-direction: column-reverse;
+      gap: 32px;
+    }
+
+
+    p{
+      color: var(--socz-text-primary);
+      font-size: 14px;
+      line-height: 140%;
+      letter-spacing: -1%;
+    }
+
+    .title{   
+      font-weight: 700;        
+    }
+
+
+    .bottom_desc{      
+      font-weight: 500;
+      width: 320px;       
+    }
+    
+    .col{
+      display: flex;
+      flex-direction: column;
+      max-width: 447px;
+    }
+
+    .logo-col{
+      width: 224px;
+      height: 84px;
+      padding: 16px;
+
+      img{
+        height: auto;
+        width: 163.33px;
+      }
+    }
+
+   
+  }
+
+
+  .s24-footer-columns{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 80px;
+    margin-bottom: 80px;
+
+
+    @include media-breakpoint-down(md) {
+      flex-direction: column;
+      margin-top: 32px;
+      margin-bottom: 32px;
+      gap: 16px;
+    }
+
+
+    @include media-breakpoint-between(md, xl) {
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      gap: 32px;
+
+      .col{
+        flex: auto;
+      }
+    }
+
+
+    .links{
+      display: flex;
+      flex-direction: column;
+
+   
+           a{
+            color: var(--socz-text-primary);
+            line-height: $socz-lh-snug;
+            letter-spacing: $socz-ls-body;
+            min-height: 36px;
+            font-weight: 700;         
+            gap: 4px;        
+            padding-top: 8px;
+            padding-right: 12px;
+            padding-bottom: 8px;
+            padding-left: 12px;     
+            font-size: 14px;
+                      
+          }
+
+    }
+
+  }
+
+  .locations p{
+          color: var(--socz-text-primary);
+          font-weight: 500;               
+          line-height: $socz-lh-snug;
+          letter-spacing: $socz-ls-body;
+          margin-bottom: 4px;
+  }
+
+
+
+
+
+  .bottom{
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include media-breakpoint-down(md) {
+      flex-direction: column;
+      gap: 32px;
+      align-items: flex-start;
+    }
+
+        a,p{
+          color: var(--socz-text-primary);
+          font-weight: 500;               
+          line-height: $socz-lh-snug;
+          letter-spacing: $socz-ls-body;
+        }
+
+
+
+        P{
+          margin-bottom: 4px;
+        }
+
+    .col{
+
+        .links{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+
+            @include media-breakpoint-down(md) {
+              gap: 4px;
+            }
+
+     
+
+            .separator{
+            width: 1;
+            height: 20;
+            background-color: #F3F4F6;
+
+            @include media-breakpoint-down(md) {
+              display: none;
+            }
+
+
+          }
+        }
+
+
+
+  
+
+      }
+  }
+
+
+          hr{
+          background-color: #E5E7EB;
+          margin-bottom: 32px;
+          margin-top: 32px;
+        }
+
+        .socjal-icons{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            height: 24px;
+            align-items: center;
+
+            a{
+              height: 20px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+
+              img{
+                max-height: 20px;
+                height: 100%;
+                                
+              }
+            }
+        }
+
+
+
+
+
+
+
+
+        .locations{
+          .list{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+
+            
+          a{
+            color: var(--socz-text-tertiary);
+            line-height: $socz-lh-snug;
+            letter-spacing: $socz-ls-body;
+            font-size: 14px;
+
+            @include media-breakpoint-down(md) {
+              font-size: 12px;
+            }
+          }
+
+            .separator{
+              width: 1;
+              height: 20;
+              background-color: #F3F4F6;
+
+              @include media-breakpoint-down(md) {
+                display: none;
+              }
+
+
+            }
+          }
+        }
+
+}

@@ -1,0 +1,33 @@
+@font-face {
+  font-family: "Mona Sans";
+  src: url("../fonts/mona-sans/MonaSans-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("../fonts/satoshi/Satoshi-Variable.woff2") format("woff2");
+  font-weight: 300 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("../fonts/satoshi/Satoshi-VariableItalic.woff2") format("woff2");
+  font-weight: 300 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Material Icons";
+  font-style: normal;
+  font-weight: 400;
+  src:
+    url("~material-design-icons-iconfont/dist/fonts/MaterialIcons-Regular.woff2") format("woff2"),
+    url("~material-design-icons-iconfont/dist/fonts/MaterialIcons-Regular.woff") format("woff");
+  font-display: swap;
+}

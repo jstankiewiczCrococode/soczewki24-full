@@ -1,0 +1,18 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  PrestaShop\Module\PsCustomHomeSlider\Repository\HomeSliderRepository:
+    public: true
+
+  PrestaShop\Module\PsCustomHomeSlider\Form\HomeSliderType:
+    public: true
+    arguments:
+      $locales: '@=service("prestashop.adapter.legacy.context").getContext().getLanguages()'
+
+  PrestaShop\Module\PsCustomHomeSlider\Controller\Admin\HomeSliderController:
+    public: true
+    arguments:
+      $repository: '@PrestaShop\Module\PsCustomHomeSlider\Repository\HomeSliderRepository'

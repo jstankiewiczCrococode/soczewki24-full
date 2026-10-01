@@ -1,0 +1,96 @@
+#js-product-list-header{
+
+    .s24-category-hero{
+        height: 480px;
+        border-radius: 2px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        padding: 32px;
+        display: flex;
+        align-items: end;
+        position: relative;
+
+        &::before{
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            content: '';
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+          
+
+        }
+
+        .s24-category-hero__content{
+            color: white;
+            z-index: 1;
+
+            p{
+                margin-bottom: 0px;
+                font-weight: 500;
+                line-height: 140%;
+                letter-spacing: -1%;
+                color: $socz-gray-200;
+            }
+
+
+            h1{
+                margin-bottom: 8px;
+            }
+        }
+
+
+    }
+
+
+    .s24-category-content{
+        padding-top: 64px;
+        padding-bottom: 64px;
+
+        h3{
+            margin-bottom: 16px;
+            color: var(--socz-bg-primary-solid);
+        }
+
+
+        .s24-category-content__text-preview {
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                font-family: var(--bs-body-font-family);
+                font-weight: 500;
+                font-style: Medium;          
+                line-height: 150%;
+                letter-spacing: -1%;
+                color: var(--socz-bg-primary-solid);
+            }
+
+            .s24-category-content__text.is-expanded {
+            .s24-category-content__text-preview {
+                display: block;
+                overflow: visible;
+
+            }
+            }
+
+            .s24-category-content__toggle {            
+                font-weight: 700;
+                font-style: Bold !important; 
+                line-height: 150%;
+                letter-spacing: -1%;
+                color: var(--socz-bg-primary-solid);
+                background-color: transparent;
+                border: none;
+                margin: 0;
+                padding: 0;
+                font-family: var(--bs-body-font-family);
+            }
+
+    }
+}

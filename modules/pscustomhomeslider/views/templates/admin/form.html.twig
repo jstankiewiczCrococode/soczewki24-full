@@ -1,0 +1,193 @@
+{% extends '@PrestaShop/Admin/layout.html.twig' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-12">
+
+            {{ form_start(form) }}
+
+            <div class="card">
+
+                <div class="card-header">
+                    <h3 class="card-header-title">
+                        {{ title }}
+                    </h3>
+                </div>
+
+                <div class="card-body">
+
+                    {# Zdjęcie #}
+                    <div class="form-group row">
+                        <label class="form-control-label col-md-3">
+                            {{ 'Zdjęcie'|trans({}, 'Modules.Pscustomhomeslider.Admin') }}
+                        </label>
+
+                        <div class="col-md-9">
+
+                            {% if slide is defined and slide and slide.image %}
+                                <div class="mb-3">
+                                    <img
+                                        src="{{ asset(
+                                            'img/pscustomhomeslider/' ~ slide.image
+                                        ) }}"
+                                        alt=""
+                                        style="
+                                            max-width: 500px;
+                                            max-height: 250px;
+                                            object-fit: contain;
+                                            border-radius: 4px;
+                                            border: 1px solid #ddd;
+                                        "
+                                    >
+                                </div>
+                            {% endif %}
+
+                            {{ form_widget(form.image) }}
+
+                            <small class="form-text text-muted">
+                                {{ 'Dozwolone formaty: JPG, PNG, WEBP.'|trans({}, 'Modules.Pscustomhomeslider.Admin') }}
+                            </small>
+
+                        </div>
+                    </div>
+
+                    {# Link #}
+                    <div class="form-group row">
+                        <label class="form-control-label col-md-3">
+                            {{ form_label(form.url) }}
+                        </label>
+
+                        <div class="col-md-9">
+                            {{ form_widget(form.url) }}
+                            {{ form_errors(form.url) }}
+                        </div>
+                    </div>
+
+                    {# Pozycja #}
+                    <div class="form-group row">
+                        <label class="form-control-label col-md-3">
+                            {{ form_label(form.position) }}
+                        </label>
+
+                        <div class="col-md-3">
+                            {{ form_widget(form.position) }}
+                            {{ form_errors(form.position) }}
+                        </div>
+                    </div>
+
+                    {# Aktywny #}
+                    <div class="form-group row">
+                        <label class="form-control-label col-md-3">
+                            {{ form_label(form.active) }}
+                        </label>
+
+                        <div class="col-md-9">
+                            {{ form_widget(form.active) }}
+                            {{ form_errors(form.active) }}
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <h4 class="mb-4">
+                        {{ 'Treść slajdu'|trans({}, 'Modules.Pscustomhomeslider.Admin') }}
+                    </h4>
+
+                    {#
+                        Pola językowe.
+                        Pobieramy języki bezpośrednio z PrestaShop,
+                        żeby pokazać osobne pola dla każdego języka.
+                    #}
+
+                    {% for language in languages|default([]) %}
+
+                        {% set idLang = language.id_lang %}
+                        {% set isoCode = language.iso_code|upper %}
+
+                        <div class="card mb-4">
+
+                            <div class="card-header">
+                                <strong>
+                                    {{ language.name }}
+                                    ({{ isoCode }})
+                                </strong>
+                            </div>
+
+                            <div class="card-body">
+
+                                <div class="form-group">
+                                    {{ form_label(
+                                        attribute(form, 'title_' ~ idLang)
+                                    ) }}
+
+                                    {{ form_widget(
+                                        attribute(form, 'title_' ~ idLang)
+                                    ) }}
+
+                                    {{ form_errors(
+                                        attribute(form, 'title_' ~ idLang)
+                                    ) }}
+                                </div>
+
+                                <div class="form-group">
+                                    {{ form_label(
+                                        attribute(form, 'description_' ~ idLang)
+                                    ) }}
+
+                                    {{ form_widget(
+                                        attribute(form, 'description_' ~ idLang)
+                                    ) }}
+
+                                    {{ form_errors(
+                                        attribute(form, 'description_' ~ idLang)
+                                    ) }}
+                                </div>
+
+                                <div class="form-group">
+                                    {{ form_label(
+                                        attribute(form, 'button_text_' ~ idLang)
+                                    ) }}
+
+                                    {{ form_widget(
+                                        attribute(form, 'button_text_' ~ idLang)
+                                    ) }}
+
+                                    {{ form_errors(
+                                        attribute(form, 'button_text_' ~ idLang)
+                                    ) }}
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+
+                <div class="card-footer">
+
+                    <a
+                        href="{{ path('admin_pscustomhomeslider_index') }}"
+                        class="btn btn-outline-secondary"
+                    >
+                        {{ 'Anuluj'|trans({}, 'Admin.Actions') }}
+                    </a>
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary float-right"
+                    >
+                        <i class="material-icons">save</i>
+                        {{ 'Zapisz'|trans({}, 'Admin.Actions') }}
+                    </button>
+
+                </div>
+
+            </div>
+
+            {{ form_end(form) }}
+
+        </div>
+    </div>
+{% endblock %}

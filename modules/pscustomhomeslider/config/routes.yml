@@ -1,0 +1,31 @@
+admin_pscustomhomeslider_index:
+  path: /pscustomhomeslider
+  methods: [GET]
+  defaults:
+    _controller: 'PrestaShop\Module\PsCustomHomeSlider\Controller\Admin\HomeSliderController::index'
+    _legacy_controller: AdminPsCustomHomeSlider
+
+admin_pscustomhomeslider_create:
+  path: /pscustomhomeslider/new
+  methods: [GET, POST]
+  defaults:
+    _controller: 'PrestaShop\Module\PsCustomHomeSlider\Controller\Admin\HomeSliderController::create'
+    _legacy_controller: AdminPsCustomHomeSlider
+
+admin_pscustomhomeslider_edit:
+  path: /pscustomhomeslider/{id}/edit
+  methods: [GET, POST]
+  requirements:
+    id: '\d+'
+  defaults:
+    _controller: 'PrestaShop\Module\PsCustomHomeSlider\Controller\Admin\HomeSliderController::edit'
+    _legacy_controller: AdminPsCustomHomeSlider
+
+admin_pscustomhomeslider_delete:
+  path: /pscustomhomeslider/{id}/delete
+  methods: [POST]
+  requirements:
+    id: '\d+'
+  defaults:
+    _controller: 'PrestaShop\Module\PsCustomHomeSlider\Controller\Admin\HomeSliderController::delete'
+    _legacy_controller: AdminPsCustomHomeSlider

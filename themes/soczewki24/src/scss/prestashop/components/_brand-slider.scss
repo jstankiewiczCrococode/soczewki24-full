@@ -1,0 +1,209 @@
+@use "sass:map";
+
+$md: map.get($grid-breakpoints, "md");
+
+#product-carusel {
+  background-color: $socz-gray-50;
+  padding-top: 80px;
+  padding-bottom: 80px;
+
+  @media (max-width: $md) {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+  
+
+  .top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+
+
+
+  }
+
+  h5{
+    margin-bottom: 0px;
+  }
+
+
+ a {
+      width: 146px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      &:hover {
+        span {
+          color: var(--socz-bg-primary-solid-hover);
+        }
+      }
+
+      img {
+        width: 15.63px;
+        height: 13.13px;
+      }
+
+      span {
+        color: var(--socz-bg-primary-solid);
+        font-weight: 700;
+        line-height: $socz-lh-base;
+        letter-spacing: $socz-ls-body;
+      }
+    }
+
+
+
+  button {
+    margin-top: 16px;
+    width: 36px;
+    height: 52px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--socz-bg-primary-solid);
+    border: none;
+    border-radius: $socz-radius-xxs;
+    backdrop-filter: blur(8px);
+
+
+    &:hover{
+      background-color: --socz-bg-primary-solid-hover;
+    }
+
+    img {
+      width: 15.63px;
+      height: 13.13px;
+    }
+  }
+
+  .brandslider {
+    width: calc(100% + ((100vw - 100%) / 2) - #{$container-padding-x});
+    margin-bottom: 32px;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-start;
+
+    @media (max-width: 767px) {
+      
+        width: calc(100% + #{$container-padding-x});
+      
+    }
+
+
+    
+
+    #arrow-left {
+      flex: 0 0 36px;      
+      position: absolute;
+      left: 8px;
+    }
+
+    #arrow-right {
+      flex: 0 0 36px;
+      position: absolute;
+      right: 8px;
+    }
+
+
+
+    &__items {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  align-items: stretch;
+  gap: 16px;
+ 
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+
+
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+&__item {
+  flex: 0 0 calc((100% - 96px) / 6.1);
+  min-width: 0;
+}
+
+&__link {
+  width: 100%;
+  height: 114px;
+  padding: 32px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+}
+
+
+    &__logo {
+      display: block;
+      width: 100%;
+      max-width: 150px;
+      height: 150px;
+      object-fit: contain;
+
+      @media (max-width: $md) {
+        max-width: 96px;
+        
+        height: 32px;
+      }
+    }
+  }
+
+  // TABLET — ZOSTAWIAMY
+  @media (max-width: 1279.99px) and (min-width: 768px) {
+    .brandslider__item {
+      flex: 0 0 calc((100% - 48px) / 4);
+    }
+  }
+
+  // MOBILE — ZOSTAWIAMY
+  @media (max-width: 767px) {
+    .brandslider {
+      margin-top: 0px;
+      margin-bottom: 16px;
+
+      #arrow-left,
+      #arrow-right {
+        display: none;
+      }
+
+      &__item {
+        flex: 0 0 128px;
+        min-width: 128px;
+      }
+
+      &__link {
+        width: 128px;
+        height: 64px;
+      }
+    }
+  }
+}
+
+
+  .brandslider__dots {
+      align-items: center;
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+}
+
+.brandslider__dot {
+    background-color: #1e2939;
+    border-radius: 2px;
+    height: 4px !important;
+    width: 44px !important;
+
+  &.is-active {
+    background: #000;
+  }
+}
