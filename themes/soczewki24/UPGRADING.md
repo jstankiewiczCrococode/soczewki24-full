@@ -45,7 +45,7 @@ Trzymaj te liste aktualna - to ona decyduje, czy nastepny upgrade zajmie godzine
 - `src/scss/prestashop/layout/_header-banner.scss` - **nowy plik**, pasek komunikatu nad headerem (hook `displayBanner`, tresc w `croco_soczewki`)
 - `src/js/theme.ts` - import i wywolanie `initAnnouncementBar()` obok `initSearchbar()`
 - `src/js/constants/selectors-map.ts` - dodany obiekt `announcementBar` i wpis w `selectorsMap`
-- `src/js/announcement-bar.ts` + `announcement-bar.test.ts` - **nowe pliki**, zamykanie paska i zapis ciasteczka
+- `src/js/announcement-bar.ts` - **nowy plik**, zamykanie paska i zapis ciasteczka
 - `src/scss/prestashop/modules/_megamenu.scss` - **nowy plik**, style modulu `croco_megamenu`
 - `src/scss/prestashop/modules/_searchbar.scss` - reguly widgetu w offcanvasie obowiazuja na kazdym breakpoincie (dawny blok `media-breakpoint-down(md)` usuniety)
 - `modules/ps_searchbar/ps_searchbar.tpl` - **przepisany**: wersja desktop z inputem w headerze usunieta, sama lupa otwierajaca offcanvas na kazdym breakpoincie, widget na stale w offcanvasie. Zmiany z upstreamu w tym szablonie trzeba przenosic recznie, `git apply` nie zadziala
@@ -53,6 +53,15 @@ Trzymaj te liste aktualna - to ona decyduje, czy nastepny upgrade zajmie godzine
 - `src/scss/prestashop/components/_icon.scss` - **nowy plik**, rozmiar ikon; import dopisany na koncu `components/_index.scss`
 - `modules/ps_shoppingcart/ps_shoppingcart.tpl` - klasy ukladu na wrapperze (`order-4 col-auto px-md-0 d-none d-md-flex align-items-center`)
 - `modules/ps_customersignin/ps_customersignin.tpl` - klasy ukladu na wrapperze (`order-5 col-auto px-md-0 d-none d-md-flex align-items-center`)
+- `templates/catalog/product.tpl` - **przepisany**: siatka `.pdp` (tytul, galeria, kolumna zakupowa, tresc) zamiast `.product__container`. Usuniete wzgledem upstreamu, bo nie ma ich w makiecie: producent pod tytulem, krotki opis, akordeon (opis, szczegoly, zalaczniki, `extraContent` - teraz zakladki), `displayReassurance`; `product-details.tpl` nie jest includowany. Klasy `js-*`, `product-container` i `data-ps-ref` zostaja, bo wymaga ich `core.js` (odswiezanie wariantu AJAX) i `productcomments.ts`
+- `templates/catalog/_partials/product-cover-thumbnails.tpl` - w quickview zostaje karuzela, na stronie produktu galeria `product-gallery-grid.tpl`. Rozpoznanie: parametr `quickview` (pierwsze otwarcie) albo `quickview=1` w zadaniu (odswiezenie wariantu)
+- `templates/catalog/_partials/quickview.tpl` - przekazuje `quickview=true` do galerii
+- `templates/catalog/_partials/product-prices.tpl` - slot na najnizsza cene z 30 dni (`displayProductPriceBlock`, `type='lowest_price'`)
+- `config/theme.yml` - custom hook `displayProductCoverActions` (akcje nad glownym zdjeciem)
+- `templates/catalog/_partials/product-gallery-grid.tpl`, `product-features.tpl`, `product-siblings.tpl`, `product-tabs.tpl` oraz `templates/components/promo-card.tpl` - **nowe pliki** strony produktu
+- `src/scss/prestashop/pages/_product-page.scss` + `components/_promo-card.scss` - **nowe pliki**; importy dopisane w `pages/_index.scss` i `components/_index.scss`
+- `src/scss/prestashop/components/_icon.scss` - normalizacja koloru obejmuje tez `stroke` (ikony liniowe)
+- `src/js/product-gallery.ts` + `product-gallery.test.ts` - **nowe pliki**, otwieranie modala na klikniatym zdjeciu; wywolanie w `theme.ts`
 - Usuniete z forka: `.github/`, `docker/`, `CLAUDE.md`, `CONTEXT.md`, `PRODUCT.md`, `CONTRIBUTING.md`, pliki konfiguracyjne asystentow AI
 
 ## Zasady, ktore trzymaja koszt upgrade'u nisko

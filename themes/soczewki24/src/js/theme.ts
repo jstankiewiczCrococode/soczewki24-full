@@ -14,6 +14,7 @@ import initProductBehavior from '@js/product';
 import initMobileMenu from '@js/mobile-menu';
 import initSearchbar from '@js/modules/ps_searchbar';
 import initAnnouncementBar from '@js/announcement-bar';
+import initProductGallery from '@js/product-gallery';
 import initEmailalerts from '@js/modules/ps_emailalerts';
 import initGdpr from '@js/modules/psgdpr';
 import initLanguageSelector from '@js/modules/ps_languageselector';
@@ -56,6 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
   useQuantityInput();
   initSearchbar();
   initAnnouncementBar();
+  initProductGallery();
   initEmailalerts();
   initGdpr();
   initLanguageSelector();

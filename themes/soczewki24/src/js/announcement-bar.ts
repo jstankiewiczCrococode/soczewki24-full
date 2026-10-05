@@ -20,6 +20,9 @@ const initAnnouncementBar = () => {
 
     bar.remove();
 
+    // Wysokosc przyklejonego naglowka sie zmienila; --scroll-padding-top liczy sie na resize.
+    window.dispatchEvent(new Event('resize'));
+
     // Przycisk znika z DOM, wiec bez tego focus wraca na <body> (WCAG 2.4.3).
     document.querySelector<HTMLElement>(AnnouncementBarMap.focusAfterClose)?.focus();
   });

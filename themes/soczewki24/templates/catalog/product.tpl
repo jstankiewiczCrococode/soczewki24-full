@@ -3,6 +3,7 @@
  * file that was distributed with this source code.
  *}
 {extends file=$layout}
+{block name='breadcrumb'}{/block}
 
 {block name='head' append}
   <meta property="og:type" content="product">
@@ -29,46 +30,28 @@
 {/block}
 
 {block name='content'}
-  {* FIRST PART - PHOTO, NAME, PRICES, ADD TO CART*}
-  <div class="product__container product-container js-product-container" data-ps-ref="product-container">
-    <div class="product__left">
+  {* Siatka: tytul, galeria, kolumna zakupowa (sticky), tresc. Klasy js-* / product-container sa wymagane przez core.js (odswiezanie wariantu przez AJAX). *}
+  <div class="pdp product-container js-product-container" data-ps-ref="product-container">
+    {block name='product_header'}
+      <div class="pdp__title">
+        <h1 class="pdp__name h5 fw-semibold">{block name='page_title'}{$product.name}{/block}</h1>
+      </div>
+    {/block}
+
+    <div class="pdp__gallery">
       {block name='product_cover_thumbnails'}
         {include file='catalog/_partials/product-cover-thumbnails.tpl'}
       {/block}
     </div>
 
-    <div class="product__right" data-ps-ref="product-right" tabindex="-1">
-      {block name='product_header'}
-        <h1 class="product__name h2 {if !empty($product_manufacturer->name) && !empty($product_brand_url)}mb-1{/if}">
-          {block name='page_title'}{$product.name}{/block}
-        </h1>
-      {/block}
-
-      {block name='product_manufacturer'}
-        {if !empty($product_manufacturer->name) && !empty($product_manufacturer->url)}
-          <div class="product__manufacturer">
-            <a href="{$product_manufacturer->url}" aria-label="{l s='Product brand: %brand_name%' sprintf=['%brand_name%' => $product_manufacturer->name] d='Shop.Theme.Catalog'}">
-              {$product_manufacturer->name}
-            </a>
-          </div>
-        {/if}
-      {/block}
-
-      {block name='product_prices'}
-        {include file='catalog/_partials/product-prices.tpl'}
-      {/block}
-
-      {block name='product_description_short'}
-        <div class="product__description-short rich-text">{$product.description_short nofilter}</div>
-      {/block}
-
+    <div class="pdp__buy" data-ps-ref="product-right" tabindex="-1">
       {block name='product_customization'}
         {if $product.is_customizable && count($product.customizations.fields)}
           {include file='catalog/_partials/product-customization.tpl' customizations=$product.customizations}
         {/if}
       {/block}
 
-      <div class="product__actions js-product-actions">
+      <div class="pdp__actions js-product-actions">
         {block name='product_buy'}
           <form action="{$urls.pages.cart}" method="post" id="add-to-cart-or-refresh">
             <input type="hidden" name="token" value="{$static_token}">
@@ -79,6 +62,26 @@
               {include file='catalog/_partials/product-variants.tpl'}
             {/block}
 
+            {block name='product_siblings'}
+              {include file='catalog/_partials/product-siblings.tpl'}
+            {/block}
+
+            {block name='product_attributes'}
+              {include file='catalog/_partials/product-features.tpl' part='attributes'}
+            {/block}
+
+            <hr class="pdp__divider">
+
+            {block name='product_salon_availability'}
+              {include file='components/promo-card.tpl'
+                icon='mappin'
+                title={l s='Zobacz, czy produkt jest dostępny w twoim salonie' d='Shop.Theme.Catalog'}
+                text={l s='Zobacz czy produkt którego szukasz jest dostępny w salonie - jeśli nie, możesz go zamówić za darmo do wybranego punktu.' d='Shop.Theme.Catalog'}
+                link_label={l s='Sprawdź dostępność' d='Shop.Theme.Catalog'}
+                link_url=$urls.pages.stores
+              }
+            {/block}
+
             {block name='product_pack'}
               {include file='catalog/_partials/product-pack.tpl'}
             {/block}
@@ -87,9 +90,15 @@
               {include file='catalog/_partials/product-discounts.tpl'}
             {/block}
 
-            {block name='product_add_to_cart'}
-              {include file='catalog/_partials/product-add-to-cart.tpl'}
-            {/block}
+            <div class="pdp-buybox">
+              {block name='product_prices'}
+                {include file='catalog/_partials/product-prices.tpl'}
+              {/block}
+
+              {block name='product_add_to_cart'}
+                {include file='catalog/_partials/product-add-to-cart.tpl'}
+              {/block}
+            </div>
 
             {block name='product_additional_info'}
               {include file='catalog/_partials/product-additional-info.tpl'}
@@ -105,104 +114,33 @@
         {/block}
       </div>
     </div>
-  </div>
-  {* END OF FIRST PART *}
 
-  {* SECOND PART - REASSURANCE, TABS *}
-  <div class="product__bottom">
-    <div class="product__bottom-left">
+    <div class="pdp__content">
       {block name='product_tabs'}
-        <div class="product__accordion accordion accordion-flush" id="product_accordion">
-          {block name='product_description'}
-            {if $product.description}
-              <div class="accordion-item" id="product_description">
-                <h2 class="accordion-header" id="product_description_heading">
-                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#product_description_collapse" aria-expanded="true" aria-controls="product_description_collapse">
-                    {l s='Description' d='Shop.Theme.Catalog'}
-                  </button>
-                </h2>
-
-                <div id="product_description_collapse" class="accordion-collapse collapse show" aria-labelledby="product_description_heading">
-                  <div class="accordion-body">
-                    <div class="product__description rich-text">
-                      {$product.description nofilter}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            {/if}
-          {/block}
-
-          {block name='product_details'}
-            {include file='catalog/_partials/product-details.tpl'}
-          {/block}
-
-          {block name='product_attachments'}
-            {if $product.attachments}
-              <div class="info accordion-item" id="product_attachments">
-                <h2 class="accordion-header" id="product_attachments_heading">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#product_attachments_collapse" aria-expanded="false" aria-controls="product_attachments_collapse">
-                    {l s='Download' d='Shop.Theme.Actions'}
-                  </button>
-                </h2>
-
-                <div id="product_attachments_collapse" class="accordion-collapse collapse" aria-labelledby="product_attachments_heading">
-                  <div class="accordion-body">
-                    <div class="product__attachments">
-                      {foreach from=$product.attachments item=attachment}
-                        <div class="attachment">
-                          <p class="attachment__name">
-                            {$attachment.name}
-                          </p>
-
-                          {if $attachment.description}
-                            <p class="attachment__description">
-                              {$attachment.description}
-                            </p>
-                          {/if}
-
-                          <a class="attachment__link stretched-link"
-                            href="{url entity='attachment' params=['id_attachment' => $attachment.id_attachment]}"
-                            aria-label="{l s='Download %attachment_name%' sprintf=['%attachment_name%' => $attachment.name] d='Shop.Theme.Actions'}"
-                          >
-                            <i class="material-icons">&#xE2C4;</i> {l s='Download' d='Shop.Theme.Actions'} ({$attachment.file_size_formatted})
-                          </a>
-                        </div>
-                      {/foreach}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            {/if}
-          {/block}
-
-          {* New collapses for module hooked content *}
-          {foreach from=$product.extraContent item=extra key=extraKey}
-            <div class="accordion-item" id="extra_{$extraKey}" {foreach $extra.attr as $key => $val} {$key}="{$val}"{/foreach}>
-              <h2 class="accordion-header" id="product_extra_{$extraKey}_heading">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#product_extra_{$extraKey}_collapse" aria-expanded="false" aria-controls="product_extra_{$extraKey}_collapse">
-                  {$extra.title}
-                </button>
-              </h2>
-
-              <div id="product_extra_{$extraKey}_collapse" class="accordion-collapse collapse" data-bs-parent="#product_accordion" aria-labelledby="product_extra_{$extraKey}_heading">
-                <div class="accordion-body">
-                  {$extra.content nofilter}
-                </div>
-              </div>
-            </div>
-          {/foreach}
-        </div>
+        {include file='catalog/_partials/product-tabs.tpl'}
       {/block}
-    </div>
 
-    <div class="product__bottom-right">
-      {block name='hook_display_reassurance'}
-        {hook h='displayReassurance'}
+      {block name='product_attachments'}
+        {if $product.attachments}
+          <section class="pdp-attachments">
+            <h2 class="pdp-attachments__title">{l s='Download' d='Shop.Theme.Actions'}</h2>
+            <ul class="list-unstyled">
+              {foreach from=$product.attachments item=attachment}
+                <li>
+                  <a
+                    href="{url entity='attachment' params=['id_attachment' => $attachment.id_attachment]}"
+                    aria-label="{l s='Download %attachment_name%' sprintf=['%attachment_name%' => $attachment.name] d='Shop.Theme.Actions'}"
+                  >
+                    {$attachment.name} ({$attachment.file_size_formatted})
+                  </a>
+                </li>
+              {/foreach}
+            </ul>
+          </section>
+        {/if}
       {/block}
     </div>
   </div>
-  {* END OF SECOND PART *}
 
   {block name='product_accessories'}
     {if $accessories}
@@ -210,8 +148,9 @@
     {/if}
   {/block}
 
+  {* Opinie (productcomments) siedza w zakladce, wiec tu wszystko poza nimi *}
   {block name='product_footer'}
-    {hook h='displayFooterProduct' product=$product category=$category}
+    {hook h='displayFooterProduct' excl='productcomments' product=$product category=$category}
   {/block}
 
   {block name='page_footer_container'}

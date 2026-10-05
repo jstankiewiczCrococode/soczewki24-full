@@ -1,0 +1,3 @@
+{**
+    Na potrzebę wyłączenia breadcrumbsów.
+**}

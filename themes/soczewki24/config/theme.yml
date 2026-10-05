@@ -43,6 +43,10 @@ global_settings:
       - ps_brandlist
       - ps_supplierlist
   hooks:
+    custom_hooks:
+      - name: displayProductCoverActions
+        title: Product cover actions
+        description: Akcje nad glownym zdjeciem produktu (np. przycisk "Przymierz online").
     modules_to_unhook:
       displayFooter:
         - ps_socialfollow

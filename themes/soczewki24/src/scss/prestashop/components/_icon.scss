@@ -13,4 +13,9 @@
   svg [fill]:not([fill="none"]) {
     fill: currentcolor;
   }
+
+  // To samo dla ikon liniowych (obrys zamiast wypelnienia).
+  svg [stroke]:not([stroke="none"]) {
+    stroke: currentcolor;
+  }
 }

@@ -1,0 +1,79 @@
+$component-name: promo-card;
+
+.#{$component-name} {
+  display: grid;
+  gap: $socz-spacing-4;
+  padding: $socz-spacing-4;
+  background-color: $socz-color-surface;
+  border-radius: $socz-radius-xxs;
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: $socz-spacing-2;
+    align-items: flex-start;
+  }
+
+  &__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-block-end: $socz-spacing-1;
+    color: $socz-white;
+    border-radius: $socz-radius-xxs;
+
+    &--primary {
+      background-color: $socz-primary-600;
+    }
+
+    &--dark {
+      background-color: $socz-gray-900;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    font-weight: 600;
+    line-height: $socz-lh-snug;
+  }
+
+  &__text {
+    margin: 0;
+    font-size: $socz-fs-body-sm;
+    line-height: $socz-lh-snug;
+    color: var(--bs-secondary-color);
+  }
+
+  &__link {
+    display: inline-flex;
+    gap: $socz-spacing-2;
+    align-items: center;
+    margin-block-start: $socz-spacing-1;
+    font-size: $socz-fs-body-sm;
+    font-weight: 600;
+    color: var(--bs-body-color);
+    text-decoration: none;
+
+    &:hover,
+    &:focus-visible {
+      color: var(--bs-link-hover-color);
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    min-height: 10rem;
+    object-fit: cover;
+    border-radius: $socz-radius-xxs;
+  }
+
+  @include media-breakpoint-up(md) {
+    &--with-image {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 40%);
+      align-items: center;
+    }
+  }
+}

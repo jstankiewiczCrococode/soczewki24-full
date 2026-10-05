@@ -47,6 +47,12 @@
           {/block}
         </div>
 
+        {* Najnizsza cena z 30 dni (Omnibus): wypelnia modul przez displayProductPriceBlock, bez modulu pusto *}
+        {capture name='lowest_price'}{hook h='displayProductPriceBlock' product=$product type='lowest_price'}{/capture}
+        {if $smarty.capture.lowest_price|trim}
+          <div class="product__lowest-price">{$smarty.capture.lowest_price nofilter}</div>
+        {/if}
+
         {block name='product_pack_price'}
           {if $displayPackPrice}
             <span class="product__pack-price">

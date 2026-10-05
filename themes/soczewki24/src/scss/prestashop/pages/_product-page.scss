@@ -1,0 +1,428 @@
+$component-name: pdp;
+
+.#{$component-name} {
+  display: grid;
+  grid-template-areas:
+    "title"
+    "gallery"
+    "buy"
+    "content";
+  grid-template-columns: minmax(0, 1fr);
+  gap: $socz-spacing-4;
+  padding-block: $socz-spacing-6;
+  margin-block-end: $socz-spacing-8;
+
+  &__title {
+    grid-area: title;
+  }
+
+  &__gallery {
+    grid-area: gallery;
+  }
+
+  &__buy {
+    grid-area: buy;
+  }
+
+  &__content {
+    grid-area: content;
+    min-width: 0;
+  }
+
+  &__name {
+    margin: 0;
+  }
+
+  &__divider {
+    margin: 0;
+  }
+
+  &__buy form {
+    display: flex;
+    flex-direction: column;
+    gap: $socz-spacing-6;
+  }
+
+  @include media-breakpoint-up(lg) {
+    grid-template-areas:
+      "gallery title"
+      "gallery buy"
+      "content buy";
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+    row-gap: $socz-spacing-6;
+    column-gap: $socz-spacing-8;
+
+    &__buy {
+      position: sticky;
+      top: var(--scroll-padding-top, #{$socz-spacing-6});
+      align-self: start;
+    }
+  }
+}
+
+.#{$component-name} .#{$component-name}__buy form > * {
+  margin-block: 0;
+}
+
+// --- Galeria -----------------------------------------------------------------
+.pdp-gallery {
+  position: relative;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: $socz-spacing-4;
+  }
+
+  &__more,
+  &__toggle {
+    margin-block-start: $socz-spacing-4;
+  }
+
+  &__item {
+    display: block;
+    padding: 0;
+    cursor: pointer;
+    background-color: $socz-color-surface;
+    border: none;
+    border-radius: $socz-radius-xxs;
+
+    &--main {
+      grid-column: 1 / -1;
+      aspect-ratio: 24 / 25;
+    }
+
+    &--small {
+      aspect-ratio: 27 / 20;
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--bs-primary);
+      outline-offset: 2px;
+    }
+  }
+
+  &__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  &__actions {
+    position: absolute;
+    top: $socz-spacing-4;
+    left: $socz-spacing-4;
+    z-index: 2;
+  }
+
+  .product-flags {
+    top: $socz-spacing-4;
+    right: $socz-spacing-4;
+    left: auto;
+    flex-direction: column;
+    align-items: flex-end;
+    width: auto;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__toggle {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__toggle-button {
+    display: inline-flex;
+    gap: $socz-spacing-2;
+    align-items: center;
+
+    .icon {
+      transition: var(--bs-transition-default);
+    }
+
+    &[aria-expanded="true"] .icon {
+      transform: rotate(-0.5turn);
+    }
+
+    &[aria-expanded="true"] .pdp-gallery__toggle-label--more,
+    &[aria-expanded="false"] .pdp-gallery__toggle-label--less {
+      display: none;
+    }
+  }
+}
+
+// --- Inne warianty jako osobne produkty (slot, dane z modulu) ------------------
+.pdp-siblings {
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $socz-spacing-3;
+    margin: 0;
+  }
+
+  &__item {
+    display: block;
+    width: 6.5rem;
+    aspect-ratio: 13 / 9;
+    background-color: $socz-color-surface;
+    border: 1px solid var(--bs-border-color);
+    border-radius: $socz-radius-xxs;
+
+    &--active {
+      outline: 2px solid var(--bs-primary);
+      outline-offset: -2px;
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--bs-primary);
+      outline-offset: 2px;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+// --- Cechy ---------------------------------------------------------------------
+.pdp-attributes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: $socz-spacing-4 $socz-spacing-6;
+  margin: 0;
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: $socz-spacing-1;
+  }
+
+  &__label {
+    font-size: $socz-fs-body-xs;
+    font-weight: 400;
+    color: var(--bs-secondary-color);
+  }
+
+  &__value {
+    margin: 0;
+    font-size: $socz-fs-body-sm;
+    font-weight: 600;
+    line-height: $socz-lh-snug;
+  }
+}
+
+// --- Box z cena i przyciskiem ----------------------------------------------------
+.pdp-buybox {
+  display: grid;
+  grid-template-areas: "prices actions";
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: $socz-spacing-4;
+  align-items: end;
+  padding: $socz-spacing-4;
+  background-color: $socz-color-surface;
+  border-radius: $socz-radius-xxs;
+
+  .product__add-to-cart-container {
+    display: contents;
+  }
+
+  .product__prices {
+    grid-area: prices;
+    margin: 0;
+    font-size: $socz-fs-body-base;
+  }
+
+  .product__prices-block {
+    gap: $socz-spacing-1;
+  }
+
+  .product__regular-price {
+    font-size: $socz-fs-body-base;
+    color: var(--bs-secondary-color);
+    text-decoration: line-through;
+  }
+
+  // dopoki nie ma ceny referencyjnej z 30 dni (Omnibus).
+  .product__discount-percentage,
+  .product__discount-amount {
+    display: none;
+  }
+
+  .product__price {
+    font-size: 1.75rem;
+    font-weight: 700;
+    line-height: $socz-lh-tight;
+    color: var(--socz-text-brand-primary);
+  }
+
+  .product__lowest-price {
+    font-size: $socz-fs-body-xs;
+    line-height: $socz-lh-snug;
+    color: var(--bs-secondary-color);
+  }
+
+  .product__tax-infos {
+    font-size: $socz-fs-body-xs;
+  }
+
+  .product__actions-qty-add {
+    flex-wrap: nowrap;
+    grid-area: actions;
+    gap: $socz-spacing-3;
+    justify-content: flex-end;
+  }
+
+  .product__quantity {
+    display: none;
+  }
+
+  .product__add-to-cart {
+    flex-grow: 0;
+  }
+
+  .product__add-to-cart-button {
+    width: auto;
+    white-space: nowrap;
+
+    .material-icons {
+      display: none;
+    }
+  }
+
+  .product__availability,
+  .product__minimal-quantity {
+    grid-column: 1 / -1;
+    margin: 0;
+  }
+}
+
+// --- Zakladki --------------------------------------------------------------------
+.pdp-tabs {
+  &__nav {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: $socz-spacing-6;
+    padding-inline: 0;
+    padding-block: $socz-spacing-3;
+    margin-block-end: $socz-spacing-6;
+    overflow-x: auto;
+    border-bottom: 1px solid var(--bs-border-color);
+  }
+
+  &__link {
+    padding: $socz-spacing-3 0;
+    margin-block-end: -1px;
+    font-size: $socz-fs-body-sm;
+    font-weight: 600;
+    color: var(--bs-secondary-color);
+    white-space: nowrap;
+    background: none;
+    border: 0;
+    border-block-end: 2px solid transparent;
+    border-radius: 0;
+
+    &:hover,
+    &:focus-visible {
+      color: var(--bs-link-hover-color);
+    }
+
+    &.active {
+      color: $socz-color-brand-text;
+      border-block-end-color: $socz-primary-600;
+    }
+  }
+
+  .tab-pane {
+    display: flex;
+    flex-direction: column;
+    gap: $socz-spacing-6;
+
+    &:not(.active) {
+      display: none;
+    }
+  }
+}
+
+// --- Wymiary ---------------------------------------------------------------------
+.pdp-dimensions {
+  &__title {
+    margin-block-end: $socz-spacing-4;
+    font-size: $socz-fs-body-md;
+    font-weight: 700;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: $socz-spacing-4;
+    margin: 0;
+  }
+
+  &__item {
+    display: flex;
+    gap: $socz-spacing-3;
+    align-items: center;
+  }
+
+  &__icon {
+    display: inline-flex;
+    flex-shrink: 0;
+    width: 3.5rem;
+    color: var(--bs-secondary-color);
+
+    svg {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    gap: $socz-spacing-0-5;
+    font-size: $socz-fs-body-sm;
+  }
+
+  &__value {
+    font-weight: 600;
+    color: var(--bs-secondary-color);
+  }
+
+  @include media-breakpoint-up(md) {
+    &__list {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+}
+
+// --- Opis ------------------------------------------------------------------------
+.pdp-description {
+  line-height: 1.6;
+  color: var(--bs-secondary-color);
+
+  h2,
+  h3 {
+    margin-block: $socz-spacing-6 $socz-spacing-3;
+    font-size: $socz-fs-body-lg;
+    font-weight: 700;
+    color: var(--bs-body-color);
+  }
+
+  > :first-child {
+    margin-block-start: 0;
+  }
+}
+
+.pdp-attachments {
+  margin-block-start: $socz-spacing-6;
+
+  &__title {
+    margin-block-end: $socz-spacing-3;
+    font-size: $socz-fs-body-md;
+    font-weight: 700;
+  }
+}
