@@ -13,6 +13,7 @@ import initCustomer from '@js/pages/customer';
 import initProductBehavior from '@js/product';
 import initMobileMenu from '@js/mobile-menu';
 import initSearchbar from '@js/modules/ps_searchbar';
+import initAnnouncementBar from '@js/announcement-bar';
 import initEmailalerts from '@js/modules/ps_emailalerts';
 import initGdpr from '@js/modules/psgdpr';
 import initLanguageSelector from '@js/modules/ps_languageselector';
@@ -37,13 +38,10 @@ import initProductComments from '@js/modules/productcomments';
 import parseData from '@helpers/parseData';
 import initHomeSlider from '@js/home/slider';
 
-
 initEmitter();
 
 document.addEventListener('DOMContentLoaded', () => {
- 
   const {prestashop, Theme: {events}} = window;
-
 
   initHomeSlider();
   initProductBehavior();
@@ -54,6 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCart();
   useQuantityInput();
   initSearchbar();
+  initAnnouncementBar();
   initEmailalerts();
   initGdpr();
   initLanguageSelector();
@@ -72,7 +71,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // Accessibility
   initProductAccessibility();
   initCartAccessibility();
-  
 
   prestashop.on(events.responsiveUpdate, () => {
     initSearchbar();

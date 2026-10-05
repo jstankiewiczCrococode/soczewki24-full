@@ -3,19 +3,19 @@
  * file that was distributed with this source code.
  *}
 
-<div id="_desktop_ps_customersignin">
+<div id="_desktop_ps_customersignin" class="order-5 col-auto px-md-0 d-none d-md-flex align-items-center">
   <div class="ps-customersignin">
     {if $customer.is_logged}
       <div class="dropdown header-block">
         <button
-          class="dropdown-toggle header-block__action-btn border-0 bg-transparent"
+          class="dropdown-toggle btn btn-tertiary btn-square-icon border-0 bg-transparent"
           id="userMenuButton"
           data-bs-toggle="dropdown"
           aria-haspopup="true"
           aria-expanded="false"
           aria-label="{l s='View my account (%customerName%)' sprintf=['%customerName%' => $customerName] d='Shop.Theme.Customeraccount'}"
         >
-          <i class="material-icons header-block__icon" aria-hidden="true">&#xE853;</i>
+          {include file='components/icon.tpl' name='user'}
           <span class="header-block__title d-none d-md-block d-lg-none">
             {$customer.firstname|capitalize|truncate:2:".":true}{$customer.lastname|capitalize|truncate:2:".":true}
           </span>
@@ -133,14 +133,14 @@
       <div class="header-block">
         <a
           href="{$urls.pages.authentication}?back={$urls.current_url|urlencode}"
-          class="header-block__action-btn"
+          class="btn btn-tertiary btn-square-icon"
           rel="nofollow"
           aria-label="{l s='Sign in' d='Shop.Theme.Actions'}"
         >
-          <i class="material-icons header-block__icon" aria-hidden="true">&#xE853;</i>
-          <span class="d-none d-md-inline header-block__title">
+          {include file='components/icon.tpl' name='user'}
+          {* <span class="d-none d-md-inline header-block__title">
             {l s='Sign in' d='Shop.Theme.Actions'}
-          </span>
+          </span> *}
         </a>
       </div>
     {/if}

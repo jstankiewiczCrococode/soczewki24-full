@@ -28,7 +28,8 @@ export const listing = {
   product: '.js-product',
   list: '#js-product-list',
   listBottom: '#js-product-list-bottom',
-  listHeader: '#js-product-list-header',  
+  listHeader: '#js-product-list-header',
+  listFooter: '#js-product-list-footer',
   searchFiltersClearAll: '.js-search-filters-clear-all',
   searchLink: '.js-search-link',
   paginationLink: '.js-pager-link',
@@ -105,6 +106,12 @@ export const progressRing = {
     backgroundCircle: '.progress-ring__background-circle',
   },
   text: '.progress-ring text',
+};
+
+export const announcementBar = {
+  bar: '[data-announcement-bar]',
+  close: '[data-announcement-close]',
+  focusAfterClose: '.header-bottom__logo a',
 };
 
 export const mobileMenu = {
@@ -252,6 +259,7 @@ const selectorsMap = {
   currencySelector,
   languageSelector,
   searchBar,
+  announcementBar,
   mobileMenu,
   guestPasswordToggle,
   visiblePassword,
