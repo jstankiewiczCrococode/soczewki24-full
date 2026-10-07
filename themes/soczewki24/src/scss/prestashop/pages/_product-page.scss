@@ -202,16 +202,11 @@ $component-name: pdp;
   }
 
   &__label {
-    font-size: $socz-fs-body-xs;
-    font-weight: 400;
-    color: var(--bs-secondary-color);
+    color: var(--socz-text-secondary);
   }
 
   &__value {
-    margin: 0;
-    font-size: $socz-fs-body-sm;
-    font-weight: 600;
-    line-height: $socz-lh-snug;
+    color: var(--socz-text-primary);
   }
 }
 
@@ -254,8 +249,8 @@ $component-name: pdp;
 
   .product__price {
     font-size: 1.75rem;
-    font-weight: 700;
     line-height: $socz-lh-tight;
+    font-weight: 800;
     color: var(--socz-text-brand-primary);
   }
 

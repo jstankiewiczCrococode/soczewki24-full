@@ -13,6 +13,8 @@ if (!defined('_PS_VERSION_')) {
     exit;
 }
 
+require_once _PS_MODULE_DIR_ . 'croco_soczewki/classes/CrocoPromoCard.php';
+
 class Croco_Soczewki extends Module
 {
     private const BANNER_COOKIE = 'croco_banner_dismissed';
@@ -23,11 +25,18 @@ class Croco_Soczewki extends Module
         'CROCO_BANNER_LINK_URL',
     ];
 
+    private const PROMO_ADMIN_CONTROLLER = 'AdminCrocoPromoCards';
+    private const PROMO_HOOKS = ['displayCrocoPdpSidebar', 'displayCrocoPdpDescription'];
+
     public function __construct()
     {
         $this->name = 'croco_soczewki';
         $this->tab = 'front_office_features';
+<<<<<<< HEAD
         $this->version = '1.1.0';
+=======
+        $this->version = '1.0.1';
+>>>>>>> 75fbb78 (feat: PDP promo cards managed in BO and assigned to categories)
         $this->author = 'CrocoCode';
         $this->need_instance = 0;
         $this->ps_versions_compliancy = ['min' => '9.1.0', 'max' => _PS_VERSION_];
@@ -60,12 +69,19 @@ class Croco_Soczewki extends Module
             && $this->registerHook('displayTop')
             && $this->registerHook('displayBanner')
             && $this->installDatabase()
-            && $this->installConfiguration();
+            && $this->installConfiguration()
+            && $this->installPromoCards();
     }
 
     public function uninstall(): bool
     {
+<<<<<<< HEAD
         return parent::uninstall() && $this->uninstallConfiguration();
+=======
+        // Celowo NIE kasujemy tabel - dane klienta zostaja.
+        // Kasowanie tylko przez swiadoma migracje.
+        return $this->uninstallPromoCardsTab() && parent::uninstall() && $this->uninstallConfiguration();
+>>>>>>> 75fbb78 (feat: PDP promo cards managed in BO and assigned to categories)
     }
 
     private function installDatabase(): bool
@@ -117,6 +133,140 @@ class Croco_Soczewki extends Module
         return $result;
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * Karty promocyjne na PDP: tabele, zakladka w BO i hooki. Publiczna, bo wola ja
+     * tez migracje z upgrade/. Idempotentna - mozna ja odpalic na modul, ktory juz to ma.
+     */
+    public function installPromoCards(): bool
+    {
+        return $this->installPromoCardsDatabase()
+            && $this->installPromoCardsTab()
+            && $this->registerHook(self::PROMO_HOOKS);
+    }
+
+    private function installPromoCardsDatabase(): bool
+    {
+        $sql = [];
+
+        $sql[] = 'CREATE TABLE IF NOT EXISTS `' . _DB_PREFIX_ . 'croco_promo_card` (
+            `id_card` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+            `id_shop` INT UNSIGNED NOT NULL DEFAULT 1,
+            `slot` VARCHAR(16) NOT NULL DEFAULT \'sidebar\',
+            `variant` VARCHAR(16) NOT NULL DEFAULT \'default\',
+            `icon` VARCHAR(32) NOT NULL DEFAULT \'\',
+            `icon_tone` VARCHAR(16) NOT NULL DEFAULT \'primary\',
+            `image` VARCHAR(255) NOT NULL DEFAULT \'\',
+            `position` INT UNSIGNED NOT NULL DEFAULT 0,
+            `active` TINYINT(1) UNSIGNED NOT NULL DEFAULT 1,
+            PRIMARY KEY (`id_card`),
+            KEY `idx_slot` (`slot`, `active`, `position`)
+        ) ENGINE=' . _MYSQL_ENGINE_ . ' DEFAULT CHARSET=utf8mb4;';
+
+        $sql[] = 'CREATE TABLE IF NOT EXISTS `' . _DB_PREFIX_ . 'croco_promo_card_lang` (
+            `id_card` INT UNSIGNED NOT NULL,
+            `id_lang` INT UNSIGNED NOT NULL,
+            `title` VARCHAR(255) NOT NULL DEFAULT \'\',
+            `text` TEXT NULL,
+            `link_label` VARCHAR(128) NOT NULL DEFAULT \'\',
+            `link_url` VARCHAR(255) NOT NULL DEFAULT \'\',
+            PRIMARY KEY (`id_card`, `id_lang`)
+        ) ENGINE=' . _MYSQL_ENGINE_ . ' DEFAULT CHARSET=utf8mb4;';
+
+        $sql[] = 'CREATE TABLE IF NOT EXISTS `' . _DB_PREFIX_ . 'croco_promo_card_category` (
+            `id_card` INT UNSIGNED NOT NULL,
+            `id_category` INT UNSIGNED NOT NULL,
+            PRIMARY KEY (`id_card`, `id_category`),
+            KEY `idx_category` (`id_category`)
+        ) ENGINE=' . _MYSQL_ENGINE_ . ' DEFAULT CHARSET=utf8mb4;';
+
+        foreach ($sql as $query) {
+            if (!Db::getInstance()->execute($query)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    private function installPromoCardsTab(): bool
+    {
+        if (Tab::getIdFromClassName(self::PROMO_ADMIN_CONTROLLER)) {
+            return true;
+        }
+
+        $tab = new Tab();
+        $tab->class_name = self::PROMO_ADMIN_CONTROLLER;
+        $tab->module = $this->name;
+        $tab->id_parent = (int) Tab::getIdFromClassName('AdminParentThemes');
+        $tab->active = true;
+
+        foreach (Language::getLanguages(false) as $language) {
+            $tab->name[(int) $language['id_lang']] = 'Karty promocyjne';
+        }
+
+        return (bool) $tab->add();
+    }
+
+    private function uninstallPromoCardsTab(): bool
+    {
+        $idTab = (int) Tab::getIdFromClassName(self::PROMO_ADMIN_CONTROLLER);
+
+        return !$idTab || (bool) (new Tab($idTab))->delete();
+    }
+
+    /**
+     * Prawa kolumna na PDP, nad boxem z cena. Wolane z szablonu:
+     * {hook h='displayCrocoPdpSidebar' product=$product}
+     */
+    public function hookDisplayCrocoPdpSidebar(array $params): string
+    {
+        return $this->renderPromoCards(CrocoPromoCard::SLOT_SIDEBAR, $params);
+    }
+
+    /**
+     * Zakladka z opisem produktu. Wolane z szablonu:
+     * {hook h='displayCrocoPdpDescription' product=$product}
+     */
+    public function hookDisplayCrocoPdpDescription(array $params): string
+    {
+        return $this->renderPromoCards(CrocoPromoCard::SLOT_DESCRIPTION, $params);
+    }
+
+    /**
+     * @param array<string, mixed> $params
+     */
+    private function renderPromoCards(string $slot, array $params): string
+    {
+        $product = $params['product'] ?? null;
+        $idProduct = ($product instanceof ArrayAccess || is_array($product)) ? (int) ($product['id_product'] ?? 0) : 0;
+
+        if ($idProduct === 0) {
+            $idProduct = (int) Tools::getValue('id_product');
+        }
+
+        $cards = CrocoPromoCard::getForProduct(
+            $idProduct,
+            $slot,
+            (int) $this->context->language->id,
+            (int) $this->context->shop->id
+        );
+
+        if (!$cards) {
+            return '';
+        }
+
+        $this->context->smarty->assign('promoCards', $cards);
+
+        return $this->fetch('module:' . $this->name . '/views/templates/hook/promo-cards.tpl');
+    }
+
+    /**
+     * Assety motywu buduje webpack, wiec tutaj ladujemy tylko to,
+     * co jest scisle zwiazane z logika tego modulu.
+     */
+>>>>>>> 75fbb78 (feat: PDP promo cards managed in BO and assigned to categories)
     public function hookActionFrontControllerSetMedia(): void
     {
         if (!Configuration::get('CROCO_SOCZEWKI_ENABLED')) {

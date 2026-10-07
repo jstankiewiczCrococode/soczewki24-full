@@ -72,14 +72,8 @@
 
             <hr class="pdp__divider">
 
-            {block name='product_salon_availability'}
-              {include file='components/promo-card.tpl'
-                icon='mappin'
-                title={l s='Zobacz, czy produkt jest dostępny w twoim salonie' d='Shop.Theme.Catalog'}
-                text={l s='Zobacz czy produkt którego szukasz jest dostępny w salonie - jeśli nie, możesz go zamówić za darmo do wybranego punktu.' d='Shop.Theme.Catalog'}
-                link_label={l s='Sprawdź dostępność' d='Shop.Theme.Catalog'}
-                link_url=$urls.pages.stores
-              }
+            {block name='product_promo_cards_sidebar'}
+              {hook h='displayCrocoPdpSidebar' product=$product}
             {/block}
 
             {block name='product_pack'}

@@ -1,12 +1,18 @@
-<aside class="promo-card{if !empty($image)} promo-card--with-image{/if}">
+<aside class="promo-card{if !empty($variant) && $variant != 'default'} promo-card--{$variant}{/if}{if !empty($image)} promo-card--with-image{/if}">
   <div class="promo-card__body">
-    <span class="promo-card__icon promo-card__icon--{$tone|default:'primary'}" aria-hidden="true">{include file='components/icon.tpl' name=$icon}</span>
+    {if !empty($icon)}
+      <span class="promo-card__icon promo-card__icon--{$tone|default:'primary'}" aria-hidden="true">{include file='components/icon.tpl' name=$icon}</span>
+    {/if}
     <p class="promo-card__title">{$title}</p>
-    <p class="promo-card__text">{$text}</p>
-    <a href="{$link_url}" class="promo-card__link">
-      {$link_label}
-      {include file='components/icon.tpl' name='arrowright'}
-    </a>
+    {if !empty($text)}
+      <p class="promo-card__text">{$text}</p>
+    {/if}
+    {if !empty($link_url) && !empty($link_label)}
+      <a href="{$link_url}" class="promo-card__link">
+        {$link_label}
+        {include file='components/icon.tpl' name='arrowright'}
+      </a>
+    {/if}
   </div>
 
   {if !empty($image)}

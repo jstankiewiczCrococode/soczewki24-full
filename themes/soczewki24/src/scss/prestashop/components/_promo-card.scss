@@ -7,6 +7,10 @@ $component-name: promo-card;
   background-color: $socz-color-surface;
   border-radius: $socz-radius-xxs;
 
+  &--subtle {
+    background-color: var(--socz-bg-brand-primary);
+  }
+
   &__body {
     display: flex;
     flex-direction: column;
@@ -76,4 +80,10 @@ $component-name: promo-card;
       align-items: center;
     }
   }
+}
+
+// Kilka kart w jednym slocie (hook z croco_soczewki).
+.promo-cards {
+  display: grid;
+  gap: $socz-spacing-4;
 }

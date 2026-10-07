@@ -15,8 +15,8 @@
         {assign var=featureKey value=$feature.name|lower}
         {if !isset($dimensionFeatures[$featureKey])}
           <div class="pdp-attributes__item">
-            <dt class="pdp-attributes__label">{$feature.name}</dt>
-            <dd class="pdp-attributes__value">{$feature.value|regex_replace:"/\s*\n\s*/":", "}</dd>
+            <dt class="pdp-attributes__label fs-body-sm fw-medium">{$feature.name}</dt>
+            <dd class="pdp-attributes__value fw-bold m-0">{$feature.value|regex_replace:"/\s*\n\s*/":", "}</dd>
           </div>
         {/if}
       {/foreach}

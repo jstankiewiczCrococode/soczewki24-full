@@ -62,14 +62,7 @@
     <div class="tab-pane fade show active" id="pdp-pane-description" role="tabpanel" aria-labelledby="pdp-tab-description" tabindex="0">
       {include file='catalog/_partials/product-features.tpl' part='dimensions'}
 
-      {include file='components/promo-card.tpl'
-        icon='eyeglasses'
-        tone='dark'
-        title={l s='Chcesz zbadać, jaką wadę wzroku posiadasz?' d='Shop.Theme.Catalog'}
-        text={l s='Umów się na bezpłatne badanie wzroku w jednym z naszych salonów i dobierz okulary lub soczewki idealnie dopasowane do Twoich potrzeb.' d='Shop.Theme.Catalog'}
-        link_label={l s='Umów się na badanie wzroku' d='Shop.Theme.Catalog'}
-        link_url=$urls.pages.contact
-      }
+      {hook h='displayCrocoPdpDescription' product=$product}
 
       {if $product.description}
         <div class="pdp-description rich-text">{$product.description nofilter}</div>
