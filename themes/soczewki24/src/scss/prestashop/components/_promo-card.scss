@@ -37,17 +37,8 @@ $component-name: promo-card;
     }
   }
 
-  &__title {
-    margin: 0;
-    font-weight: 600;
-    line-height: $socz-lh-snug;
-  }
-
   &__text {
-    margin: 0;
-    font-size: $socz-fs-body-sm;
-    line-height: $socz-lh-snug;
-    color: var(--bs-secondary-color);
+    color: var(--socz-text-secondary);
   }
 
   &__link {
@@ -55,10 +46,7 @@ $component-name: promo-card;
     gap: $socz-spacing-2;
     align-items: center;
     margin-block-start: $socz-spacing-1;
-    font-size: $socz-fs-body-sm;
-    font-weight: 600;
     color: var(--bs-body-color);
-    text-decoration: none;
 
     &:hover,
     &:focus-visible {

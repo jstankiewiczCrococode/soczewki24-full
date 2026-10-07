@@ -3,12 +3,12 @@
     {if !empty($icon)}
       <span class="promo-card__icon promo-card__icon--{$tone|default:'primary'}" aria-hidden="true">{include file='components/icon.tpl' name=$icon}</span>
     {/if}
-    <p class="promo-card__title">{$title}</p>
+    <p class="promo-card__title fw-bold m-0">{$title}</p>
     {if !empty($text)}
-      <p class="promo-card__text">{$text}</p>
+      <p class="promo-card__text fs-body-sm fw-medium m-0">{$text}</p>
     {/if}
     {if !empty($link_url) && !empty($link_label)}
-      <a href="{$link_url}" class="promo-card__link">
+      <a href="{$link_url}" class="promo-card__link fw-bold">
         {$link_label}
         {include file='components/icon.tpl' name='arrowright'}
       </a>
