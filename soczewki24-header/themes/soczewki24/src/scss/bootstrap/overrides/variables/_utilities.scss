@@ -1,0 +1,38 @@
+// Rozszerzenie utility "rounded" Bootstrapa o pelna skale radius i utility
+$utilities: map-merge(
+  $utilities,
+  (
+    "rounded": map-merge(
+      map-get($utilities, "rounded"),
+      (
+        values: map-merge(
+          map-get(map-get($utilities, "rounded"), "values"),
+          (
+            "xxs": $socz-radius-xxs,
+            "xs": $socz-radius-xs,
+            "s": $socz-radius-s,
+            "md": $socz-radius-md,
+            "lg": $socz-radius-lg,
+            "xl": $socz-radius-xl,
+            "2xl": $socz-radius-2xl,
+            "3xl": $socz-radius-3xl,
+          )
+        ),
+      )
+    ),
+    "shadow": map-merge(
+      map-get($utilities, "shadow"),
+      (
+        values: map-merge(
+          map-get(map-get($utilities, "shadow"), "values"),
+          (
+            "xs": $socz-shadow-xs,
+            "md": $socz-shadow-md,
+            "xl": $socz-shadow-xl,
+            "2xl": $socz-shadow-2xl,
+          )
+        ),
+      )
+    ),
+  )
+);

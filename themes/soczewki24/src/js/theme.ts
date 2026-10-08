@@ -39,13 +39,10 @@ import initProductComments from '@js/modules/productcomments';
 import parseData from '@helpers/parseData';
 import initHomeSlider from '@js/home/slider';
 
-
 initEmitter();
 
 document.addEventListener('DOMContentLoaded', () => {
- 
   const {prestashop, Theme: {events}} = window;
-
 
   initHomeSlider();
   initProductBehavior();
@@ -76,7 +73,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // Accessibility
   initProductAccessibility();
   initCartAccessibility();
-  
 
   prestashop.on(events.responsiveUpdate, () => {
     initSearchbar();

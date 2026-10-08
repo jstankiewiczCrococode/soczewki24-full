@@ -1,0 +1,61 @@
+/* stylelint-disable value-keyword-case */
+$component-name: noUi;
+
+.#{$component-name} {
+  &-tooltip {
+    position: absolute;
+    display: block;
+    padding: $nouislider-tooltips-padding;
+    font-size: $nouislider-tooltips-font-size;
+    font-weight: $nouislider-tooltips-font-weight;
+    color: $nouislider-tooltips-color;
+    text-align: center;
+    white-space: nowrap;
+    background: $nouislider-tooltips-background-color;
+    border: $nouislider-tooltips-border-width solid $nouislider-tooltips-border-color;
+    border-radius: $nouislider-tooltips-border-radius;
+    box-shadow: $nouislider-tooltips-shadow;
+  }
+
+  &-horizontal .#{$component-name}-tooltip {
+    bottom: 120%;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+
+  &-vertical .#{$component-name}-tooltip {
+    top: 50%;
+    right: 120%;
+    transform: translate(0, -50%);
+  }
+
+  &-horizontal .#{$component-name}-origin > .#{$component-name}-tooltip {
+    bottom: 10px;
+    left: auto;
+    transform: translate(50%, 0);
+  }
+
+  &-vertical .#{$component-name}-origin > .#{$component-name}-tooltip {
+    top: auto;
+    right: 28px;
+    transform: translate(0, -18px);
+  }
+}
+
+// Label position/style variants - dodaj klase modyfikatora na kontenerze slidera
+// (tym samym elemencie co noUiSlider.create()).
+.slider-label-bottom.#{$component-name}-horizontal .#{$component-name}-tooltip,
+.slider-label-bottom-floating.#{$component-name}-horizontal .#{$component-name}-tooltip {
+  top: 120%;
+  bottom: auto;
+}
+
+.slider-label-bottom {
+  .#{$component-name}-tooltip {
+    padding: 0;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+}

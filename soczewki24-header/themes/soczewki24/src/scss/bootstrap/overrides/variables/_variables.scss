@@ -1,0 +1,61 @@
+// Bootstrap main variables
+
+// Breakpoints
+$grid-breakpoints: (
+  "xxs": 0,
+  "xs": 360px,
+  "sm": 576px,
+  "md": 768px,
+  "lg": 992px,
+  "xl": 1200px,
+  "xxl": 1400px,
+);
+
+// Colors
+$primary: $socz-primary-600;
+$primary-text-emphasis: $primary;
+$danger: $socz-color-danger;
+$body-tertiary-color: rgba(#212529, 0.65);
+
+// Caret
+$caret-width: 1.375em;
+$caret-vertical-align: initial;
+
+// Border radius
+$border-radius: 0.5rem;
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1440px,
+);
+
+$container-padding-x: 2rem; // 32px razem = 16px z kazdej strony (mobile)
+
+// Links
+$link-decoration: none;
+
+// Typography
+$font-family-base: $socz-font-body;
+
+$h1-font-size: $socz-fs-h1;
+$h2-font-size: $socz-fs-h2;
+$h3-font-size: $socz-fs-h3;
+$h4-font-size: $socz-fs-h4;
+$h5-font-size: $socz-fs-h5;
+$h6-font-size: $socz-fs-h6;
+
+$headings-font-weight: $socz-fw-heading;
+$headings-margin-bottom: 1rem;
+
+// Box shadow
+$box-shadow-md: 0 0.625rem 1.25rem rgba(var(--bs-black-rgb), 0.1);
+
+// Options
+$enable-cssgrid: true;
+
+// Color mode
+// Uncomment the line below to enable dark mode based on media query
+// $color-mode-type: media-query;

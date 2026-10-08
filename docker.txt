@@ -1,0 +1,14 @@
+docker compose up -d
+
+cd "C:\Users\ASUS\Desktop\soczewki24-main\soczewki24-main\themes\soczewki24\assets\cache"
+
+Remove-Item "C:\Users\ASUS\Desktop\soczewki24-main\soczewki24-main\themes\soczewki24\assets\cache\*" -Recurse -Force -ErrorAction SilentlyContinue
+
+
+
+Remove-Item ".\*" -Recurse -Force -ErrorAction SilentlyContinue
+
+
+Remove-Item "C:\Users\ASUS\Desktop\soczewki24-main\soczewki24-main\themes\soczewki24\assets\cache\*" -Recurse -Force -ErrorAction SilentlyContinue
+
+Remove-Item "C:\Users\ASUS\Desktop\soczewki24-main\soczewki24-main\var\cache\dev\*" -Recurse -Force -ErrorAction SilentlyContinue

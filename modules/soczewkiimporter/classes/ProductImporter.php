@@ -71,6 +71,7 @@ class SoczewkiImporterProductImporter
                 }
 
                 $product->updateCategories($categoryIds);
+                $this->assignFeatures($product, $item);
 
                 $imageCount = 0;
                 if ($isNew && $item['image'] !== '') {
@@ -257,4 +258,91 @@ class SoczewkiImporterProductImporter
 
         return 1;
     }
+
+
+    private function assignFeatures(Product $product, array $item)
+{
+    $features = array(
+        'Styl' => isset($item['style']) ? $item['style'] : array(),
+        'Materiał' => isset($item['material']) ? $item['material'] : array(),
+        'Kształt' => isset($item['shape']) ? $item['shape'] : array(),
+        'Kolor' => isset($item['colors']) ? $item['colors'] : array(),
+        'Rozmiar' => isset($item['size']) && $item['size'] !== ''
+            ? array($item['size'])
+            : array(),
+    );
+
+    foreach ($features as $featureName => $values) {
+        $this->assignFeatureValues(
+            $product,
+            $featureName,
+            $values
+        );
+    }
+}
+
+private function assignFeatureValues(Product $product, $featureName, array $values)
+{
+    $idLang = (int)$this->context->language->id;
+
+    $idFeature = (int)Db::getInstance()->getValue(
+        'SELECT f.id_feature
+         FROM `' . _DB_PREFIX_ . 'feature` f
+         INNER JOIN `' . _DB_PREFIX_ . 'feature_lang` fl
+            ON fl.id_feature = f.id_feature
+         WHERE fl.id_lang = ' . $idLang . '
+           AND fl.name = "' . pSQL($featureName) . '"'
+    );
+
+    if (!$idFeature) {
+        return;
+    }
+
+    Db::getInstance()->delete(
+        'feature_product',
+        'id_product = ' . (int)$product->id .
+        ' AND id_feature = ' . (int)$idFeature
+    );
+
+    foreach ($values as $value) {
+        $value = trim((string)$value);
+
+        if ($value === '') {
+            continue;
+        }
+
+        $idFeatureValue = $this->findFeatureValue(
+            $idFeature,
+            $value,
+            $idLang
+        );
+
+        if (!$idFeatureValue) {
+            continue;
+        }
+
+        Db::getInstance()->insert(
+            'feature_product',
+            array(
+                'id_feature' => (int)$idFeature,
+                'id_product' => (int)$product->id,
+                'id_feature_value' => (int)$idFeatureValue,
+            )
+        );
+    }
+}
+
+private function findFeatureValue($idFeature, $value, $idLang)
+{
+    return (int)Db::getInstance()->getValue(
+        'SELECT fv.id_feature_value
+         FROM `' . _DB_PREFIX_ . 'feature_value` fv
+         INNER JOIN `' . _DB_PREFIX_ . 'feature_value_lang` fvl
+            ON fvl.id_feature_value = fv.id_feature_value
+         WHERE fv.id_feature = ' . (int)$idFeature . '
+           AND fvl.id_lang = ' . (int)$idLang . '
+           AND fvl.value = "' . pSQL($value) . '"'
+    );
+}
+
 }

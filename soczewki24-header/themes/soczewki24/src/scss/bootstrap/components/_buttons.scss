@@ -1,0 +1,117 @@
+@use "sass:map";
+
+$component-name: btn;
+
+.#{$component-name} {
+  display: inline-flex;
+  gap: 0.25rem;
+  align-items: center;
+  justify-content: center;
+
+  .material-icons {
+    width: 1.2em;
+    height: 1.2em;
+    font-size: 1.25em;
+    line-height: 1.2em;
+  }
+
+  &-square-icon {
+    padding-inline: var(--bs-btn-padding-y);
+  }
+
+  &-primary,
+  &-secondary {
+    --bs-btn-color: #{$white};
+    --bs-btn-hover-color: #{$white};
+    --bs-btn-active-color: #{$white};
+    --bs-btn-disabled-color: #{$white};
+  }
+
+  &-tertiary {
+    --bs-btn-color: #{$socz-btn-tertiary-color};
+    --bs-btn-bg: var(--bs-body-bg);
+    --bs-btn-border-color: transparent;
+    --bs-btn-hover-color: #{$socz-btn-tertiary-color};
+    --bs-btn-hover-bg: #{$socz-btn-tertiary-hover-bg};
+    --bs-btn-hover-border-color: transparent;
+    --bs-btn-focus-shadow-rgb: var(--bs-primary-rgb);
+    --bs-btn-active-color: #{$socz-btn-tertiary-color};
+    --bs-btn-active-bg: #{$socz-btn-tertiary-hover-bg};
+    --bs-btn-active-border-color: transparent;
+
+    &.btn-destructive {
+      --bs-btn-color: var(--bs-danger);
+      --bs-btn-border-color: var(--bs-danger);
+      --bs-btn-hover-color: var(--bs-danger);
+      --bs-btn-hover-bg: var(--bs-danger-bg-subtle);
+      --bs-btn-hover-border-color: var(--bs-danger);
+      --bs-btn-focus-shadow-rgb: var(--bs-danger-rgb);
+      --bs-btn-active-color: var(--bs-danger);
+      --bs-btn-active-bg: var(--bs-danger-bg-subtle);
+      --bs-btn-active-border-color: var(--bs-danger);
+    }
+  }
+
+  // .btn-primary.btn-destructive ma wyzsza specyficznosc (2 klasy) niz samo
+  // .btn-primary/.btn-secondary wyzej, wiec zawsze wygrywa niezaleznie od kolejnosci.
+  &-primary.btn-destructive {
+    @include button-variant(
+      $danger, $danger,
+      $color: $white, $hover-color: $white, $active-color: $white, $disabled-color: $white
+    );
+  }
+
+  &-secondary.btn-destructive {
+    @include button-variant(
+      $danger, $danger,
+      $color: $black, $hover-color: $black, $active-color: $black, $disabled-color: $black
+    );
+  }
+
+  &-xs {
+    @include button-size(
+      map.get($socz-btn-sizes, "xs", "padding-y"),
+      map.get($socz-btn-sizes, "xs", "padding-x"),
+      map.get($socz-btn-sizes, "xs", "font-size"),
+      $btn-border-radius-sm
+    );
+  }
+
+  &-md {
+    @include button-size(
+      map.get($socz-btn-sizes, "md", "padding-y"),
+      map.get($socz-btn-sizes, "md", "padding-x"),
+      map.get($socz-btn-sizes, "md", "font-size"),
+      $btn-border-radius
+    );
+  }
+
+  &-outline-tertiary {
+    --bs-btn-font-weight: 400;
+    --bs-btn-color: var(--bs-body-color);
+    --bs-btn-bg: var(--bs-body-bg);
+    --bs-btn-border-color: var(--bs-border-color);
+    --bs-btn-hover-color: var(--bs-link-hover-color);
+    --bs-btn-hover-bg: var(--bs-body-bg);
+    --bs-btn-hover-border-color: var(--bs-border-color);
+    --bs-btn-focus-shadow-rgb: var(--bs-primary-rgb);
+    --bs-btn-active-color: var(--bs-link-hover-color);
+    --bs-btn-active-bg: var(--bs-body-bg);
+    --bs-btn-active-border-color: var(--bs-border-color);
+  }
+
+  &-basic {
+    --bs-btn-padding-x: 0;
+    --bs-btn-font-weight: 400;
+    --bs-btn-color: var(--bs-link-color);
+    --bs-btn-bg: var(--bs-body-bg);
+    --bs-btn-border-color: var(--bs-body-bg);
+    --bs-btn-hover-color: var(--bs-link-hover-color);
+    --bs-btn-hover-bg: var(--bs-body-bg);
+    --bs-btn-hover-border-color: var(--bs-body-bg);
+    --bs-btn-focus-shadow-rgb: var(--bs-primary-rgb);
+    --bs-btn-active-color: var(--bs-link-hover-color);
+    --bs-btn-active-bg: var(--bs-body-bg);
+    --bs-btn-active-border-color: var(--bs-body-bg);
+  }
+}

@@ -1,0 +1,250 @@
+$component-name: mega-menu;
+
+.#{$component-name} {
+  &__list {
+    gap: 0.25rem;
+  }
+
+  &__item {
+    // Celowo bez position: relative - kontekstem pozycjonowania panelu ma byc
+    // .header-bottom (pelna szerokosc), nie waska pozycja menu.
+    &--highlight {
+      .#{$component-name}__toggle,
+      .#{$component-name}__link {
+        color: var(--bs-danger);
+      }
+    }
+  }
+
+  &__toggle,
+  &__link {
+    display: inline-flex;
+    gap: 0.375rem;
+    align-items: center;
+    padding: 0.75rem 0.5rem;
+    color: var(--bs-body-color);
+    text-decoration: none;
+    background: none;
+    border: none;
+
+    &:hover,
+    &:focus {
+      color: var(--bs-link-hover-color);
+    }
+  }
+
+  &__chevron {
+    display: inline-flex;
+    color: currentcolor;
+    transition: var(--bs-transition-default);
+  }
+
+  &__panel {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    z-index: 1060;
+    display: none;
+    // Nie 100vw: to liczy sie od krawedzi viewportu niezaleznie od tego, gdzie
+    // zaczyna sie panel, co dawalo scroll poziomy.
+    width: auto;
+    padding: 2rem 0;
+    background-color: var(--bs-body-bg);
+    border-top: 0.0625rem solid var(--bs-border-color);
+    box-shadow: var(--bs-box-shadow);
+  }
+
+  &__item:hover > &__panel,
+  &__item:focus-within > &__panel {
+    display: block;
+  }
+
+  &__item:hover > &__toggle .#{$component-name}__chevron,
+  &__item:focus-within > &__toggle .#{$component-name}__chevron {
+    transform: rotate(-0.5turn);
+  }
+
+  &__block {
+    margin-bottom: 1.5rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &-title {
+      margin-bottom: 0.75rem;
+      font-size: 1.125rem;
+      font-weight: 600;
+    }
+
+    &-list {
+      margin-bottom: 0;
+    }
+
+    &-link {
+      display: inline-block;
+      padding: 0.25rem 0;
+      color: var(--bs-secondary-color);
+      text-decoration: none;
+
+      &:hover,
+      &:focus {
+        color: var(--bs-link-hover-color);
+      }
+    }
+  }
+
+  &__cta {
+    display: inline-flex;
+    gap: 0.5rem;
+    align-items: center;
+    padding: 0.25rem 0;
+    font-weight: 600;
+    color: var(--bs-primary);
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      color: var(--bs-link-hover-color);
+    }
+
+    &-arrow {
+      display: inline-flex;
+      transition: var(--bs-transition-default);
+    }
+
+    &:hover &-arrow {
+      transform: translateX(0.25rem);
+    }
+  }
+
+  &__banner {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    color: var(--bs-white);
+    text-decoration: none;
+    border-radius: var(--bs-border-radius);
+
+    &-img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    // Gradient, bo tekst musi trzymac kontrast WCAG 2.1 AA takze na jasnym
+    // zdjeciu wgranym przez redaktora.
+    &-title {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      padding: 2.5rem 1rem 1rem;
+      font-weight: 600;
+      color: var(--bs-white);
+      background: linear-gradient(to top, rgb(0 0 0 / 75%), transparent);
+    }
+  }
+}
+
+// Menu mobilne (< md): hamburger + akordeon w panelu pod headerem.
+$mobile-component-name: mega-menu-mobile;
+
+.#{$mobile-component-name} {
+  // Celowo bez position: relative - panel pozycjonuje sie wzgledem .header-bottom
+  // (pelna szerokosc), tak samo jak panel desktopowy.
+  &__icon {
+    display: inline-flex;
+  }
+
+  &__toggle {
+    &[aria-expanded="true"] .#{$mobile-component-name}__icon--open,
+    &[aria-expanded="false"] .#{$mobile-component-name}__icon--close {
+      display: none;
+    }
+  }
+
+  &__panel {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    z-index: 1060;
+    max-height: 80vh;
+    padding: $socz-spacing-4;
+    overflow-y: auto;
+    background-color: var(--bs-body-bg);
+    border-top: 0.0625rem solid var(--bs-border-color);
+    box-shadow: var(--bs-box-shadow);
+  }
+
+  &__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding-block: $socz-spacing-3;
+    padding-inline: 0;
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--bs-body-color);
+    text-align: left;
+    text-decoration: none;
+    background: none;
+    border: 0;
+
+    .icon {
+      transition: var(--bs-transition-default);
+    }
+
+    &[aria-expanded="true"] .icon {
+      transform: rotate(-0.5turn);
+    }
+
+    &:hover,
+    &:focus-visible {
+      color: var(--bs-link-hover-color);
+    }
+
+    &--group {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+  }
+
+  &__item--highlight > &__row {
+    color: var(--bs-danger);
+  }
+
+  &__sub {
+    padding-inline-start: $socz-spacing-3;
+  }
+
+  &__link {
+    display: block;
+    padding-block: $socz-spacing-2;
+    padding-inline-start: $socz-spacing-3;
+    color: var(--bs-secondary-color);
+    text-decoration: none;
+
+    &:hover,
+    &:focus-visible {
+      color: var(--bs-link-hover-color);
+    }
+
+    &--cta {
+      display: flex;
+      gap: $socz-spacing-2;
+      align-items: center;
+      font-weight: 700;
+      color: var(--bs-body-color);
+    }
+  }
+
+  &__actions {
+    display: grid;
+    gap: $socz-spacing-2;
+    margin-top: $socz-spacing-4;
+  }
+}

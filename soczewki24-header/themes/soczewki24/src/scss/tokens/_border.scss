@@ -1,0 +1,23 @@
+:root {
+  --socz-border-primary: #{$socz-gray-200};    // Border/border-primary
+  --socz-border-secondary: #{$socz-gray-300};    // Border/border-secondary
+  --socz-border-tertiary: #{$socz-gray-400};    // Border/border-tertiary
+  --socz-border-brand: #{$socz-primary-400};  // Border/border-brand
+  --socz-border-brand-alt: #{$socz-primary-600};  // Border/border-brand-alt
+  --socz-border-success: #{$socz-success-500};  // Border/border-success
+  --socz-border-warning: #{$socz-danger-500};   // Border/border-warning (kolekcja "Danger" w Figmie = nasz bursztyn)
+  --socz-border-error: #{$socz-error-500};    // Border/border-error
+  --socz-border-error-subtle: #{$socz-error-300};    // Border/border-error-subtle
+}
+
+@include color-mode(dark) {
+  --socz-border-primary: #{$socz-gray-900};
+  --socz-border-secondary: #{$socz-gray-800};
+  --socz-border-tertiary: #{$socz-gray-700};
+  --socz-border-brand: #{$socz-primary-900};
+  --socz-border-brand-alt: #{$socz-primary-800};
+  --socz-border-success: #{$socz-success-900};
+  --socz-border-warning: #{$socz-danger-900};
+  --socz-border-error: #{$socz-error-900};
+  --socz-border-error-subtle: #{$socz-error-950};
+}

@@ -1,6 +1,6 @@
 <div class="panel">
   <h3><i class="icon-cloud-download"></i> Soczewki24 Importer</h3>
-  <p><strong>Etap 3:</strong> import produktów batchami po 20 sztuk.</p>
+  <p><strong>Etap 3:</strong> import produktów batchami po 100 sztuk.</p>
   <p>Import nie przechodzi automatycznie do kolejnej strony.</p>
 </div>
 
@@ -83,18 +83,18 @@
 
   <div style="margin-top:15px">
     {if $si_page > 1}
-      <a class="btn btn-default" href="{$link->getAdminLink('AdminSoczewkiImporter')}&category={$si_category|urlencode}&page={$si_page-1}">← Poprzednie 20</a>
+      <a class="btn btn-default" href="{$link->getAdminLink('AdminSoczewkiImporter')}&category={$si_category|urlencode}&page={$si_page-1}">← Poprzednie 100</a>
     {/if}
 
     {if $si_page < $si_pages}
-      <a class="btn btn-default" href="{$link->getAdminLink('AdminSoczewkiImporter')}&category={$si_category|urlencode}&page={$si_page+1}">Następne 20 →</a>
+      <a class="btn btn-default" href="{$link->getAdminLink('AdminSoczewkiImporter')}&category={$si_category|urlencode}&page={$si_page+1}">Następne 100 →</a>
     {/if}
 
     <form method="post" style="display:inline-block; margin-left:8px;">
       <input type="hidden" name="category" value="{$si_category|escape:'html':'UTF-8'}">
       <input type="hidden" name="page" value="{$si_page}">
       <button type="submit" name="import_batch" value="1" class="btn btn-success" {if $importResult || empty($si_items)}disabled{/if}>
-        <i class="icon-download"></i> Importuj batch {$si_page} (20 produktów)
+        <i class="icon-download"></i> Importuj batch {$si_page} (100 produktów)
       </button>
     </form>
   </div>

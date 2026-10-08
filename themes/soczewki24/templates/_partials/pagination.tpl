@@ -11,36 +11,59 @@
     {/block}
   </div>
 
-  <div class="{$componentName}__nav">
-    {block name='pagination_page_list'}
-      <nav aria-label="{l s='Products pagination' d='Shop.Theme.Catalog'}">
-        {if $pagination.should_be_displayed}
-          <ul class="{$componentName}">
-            {foreach from=$pagination.pages item="page" name="paginationLoop"}
-              {if $page@iteration === 1}
-                <li class="page-item">
-                  <button data-ps-data="{$page.url}"
-                    class="page-link previous {['disabled' => !$page.clickable, 'js-pager-link' => $page.clickable]|classnames}"
-                    {if !$page.clickable}aria-disabled="true" disabled{/if}
-                    aria-label="{l s='Go to previous page' d='Shop.Theme.Actions'}"
-                  >
-                    <i class="material-icons rtl-flip" aria-hidden="true">&#xE314;</i>
-                    <span class="d-none d-xl-flex">{l s='Previous' d='Shop.Theme.Actions'}</span>
-                  </button>
-                </li>
-                
-                {if $page.type === 'previous'}
-                  {continue}
-                {/if}
-              {/if}
 
-              {if $page.type === 'spacer'}
-                <li class="page-item disabled">
-                  <span class="page-link" aria-hidden="true">&hellip;</span>
-                </li>
-              {elseif $page.type != "prev" && $page.type != "next"}
+<div class="{$componentName}__nav">
+  {block name='pagination_page_list'}
+
+    <nav aria-label="{l s='Products pagination' d='Shop.Theme.Catalog'}">
+
+      {if $pagination.should_be_displayed}
+
+        <ul class="{$componentName}">
+
+          {* =====================================
+             POPRZEDNIA
+             ===================================== *}
+
+          {foreach from=$pagination.pages item="page"}
+            {if $page.type === 'previous'}
+
+              <li class="page-item">
+                <button
+                  data-ps-data="{$page.url}"
+                  class="page-link previous {['disabled' => !$page.clickable, 'js-pager-link' => $page.clickable]|classnames}"
+                  {if !$page.clickable}aria-disabled="true" disabled{/if}
+                  aria-label="{l s='Go to previous page' d='Shop.Theme.Actions'}"
+                >
+                  <img
+                    src="{$urls.theme_assets}img/paggination-arrow-left.png"
+                    alt="arrow"
+                  >
+                </button>
+              </li>
+
+            {/if}
+          {/foreach}
+
+
+          {* =====================================
+             NUMERY STRON
+             ===================================== *}
+
+          <div class="wrapper">
+
+            {foreach from=$pagination.pages item="page"}
+
+              {if $page.type !== 'previous'
+                && $page.type !== 'next'
+                && $page.type !== 'spacer'
+                && $page.page <= 5
+              }
+
                 <li class="page-item{if $page.current} active{/if}">
-                  <button data-ps-data="{$page.url}"
+
+                  <button
+                    data-ps-data="{$page.url}"
                     class="page-link {['js-pager-link' => $page.clickable]|classnames}"
                     {if !$page.clickable}aria-disabled="true"{/if}
                     {if $page.current}aria-current="page"{/if}
@@ -48,25 +71,87 @@
                   >
                     {$page.page}
                   </button>
+
                 </li>
+
               {/if}
 
-              {if $smarty.foreach.paginationLoop.last}
-                <li class="page-item">
-                  <button data-ps-data="{$page.url}"
-                    class="page-link next {['disabled' => !$page.clickable, 'js-pager-link' => $page.clickable]|classnames}"
-                    {if !$page.clickable}aria-disabled="true" disabled{/if}
-                    aria-label="{l s='Go to next page' d='Shop.Theme.Actions'}"
-                  >
-                    <span class="d-none d-xl-flex">{l s='Next' d='Shop.Theme.Actions'}</span>
-                    <i class="material-icons rtl-flip" aria-hidden="true">&#xE315;</i>
-                  </button>
-                </li>
-              {/if}
             {/foreach}
-          </ul>
-        {/if}
-      </nav>
-    {/block}
-  </div>
+
+
+            {* =====================================
+               KROPKI + OSTATNIA STRONA
+               ===================================== *}
+
+            <li class="page-item disabled">
+              <span class="page-link" aria-hidden="true">&hellip;</span>
+            </li>
+
+            {foreach from=$pagination.pages item="page"}
+
+              {if $page.type !== 'previous'
+                && $page.type !== 'next'
+                && $page.type !== 'spacer'
+                && $page.page == 58
+              }
+
+                <li class="page-item{if $page.current} active{/if}">
+
+                  <button
+                    data-ps-data="{$page.url}"
+                    class="page-link {['js-pager-link' => $page.clickable]|classnames}"
+                    {if !$page.clickable}aria-disabled="true"{/if}
+                    {if $page.current}aria-current="page"{/if}
+                    aria-label="{l s='Go to page %page%' sprintf=['%page%' => $page.page] d='Shop.Theme.Actions'}"
+                  >
+                    {$page.page}
+                  </button>
+
+                </li>
+
+              {/if}
+
+            {/foreach}
+
+          </div>
+
+
+          {* =====================================
+             NASTĘPNA
+             ===================================== *}
+
+          {foreach from=$pagination.pages item="page"}
+
+            {if $page.type === 'next'}
+
+              <li class="page-item">
+
+                <button
+                  data-ps-data="{$page.url}"
+                  class="page-link next {['disabled' => !$page.clickable, 'js-pager-link' => $page.clickable]|classnames}"
+                  {if !$page.clickable}aria-disabled="true" disabled{/if}
+                  aria-label="{l s='Go to next page' d='Shop.Theme.Actions'}"
+                >
+                  <img
+                    src="{$urls.theme_assets}img/paggination-arrow-right.png"
+                    alt="arrow"
+                  >
+                </button>
+
+              </li>
+
+            {/if}
+
+          {/foreach}
+
+        </ul>
+
+      {/if}
+
+    </nav>
+
+  {/block}
+</div>
+
+
 </nav>

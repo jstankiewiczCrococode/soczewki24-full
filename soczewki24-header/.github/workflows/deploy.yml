@@ -1,0 +1,82 @@
+name: Deploy
+
+# Staging: kazdy push na develop.
+# Produkcja: tag vX.Y.Z.
+on:
+  push:
+    branches: [develop]
+    tags: ['v*']
+
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: ${{ startsWith(github.ref, 'refs/tags/v') && 'production' || 'staging' }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: themes/soczewki24/.nvmrc
+          cache: npm
+          cache-dependency-path: themes/soczewki24/package-lock.json
+
+      # Assety buduje CI, nie serwer. Serwer dostaje gotowy katalog assets/.
+      - name: Build motywu
+        working-directory: themes/soczewki24
+        run: |
+          npm ci
+          npm run build
+
+      - name: Konfiguracja SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -p ${{ secrets.SSH_PORT || 22 }} -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+
+      # Release trafia do wlasnego katalogu, dopiero potem przepinamy symlink.
+      # Dzieki temu wdrozenie jest atomowe, a rollback to jedna komenda.
+      - name: Wysylka release'u
+        env:
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+          SSH_PORT: ${{ secrets.SSH_PORT || 22 }}
+          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+        run: |
+          RELEASE="$DEPLOY_PATH/releases/${GITHUB_SHA::8}"
+          ssh -p "$SSH_PORT" "$SSH_USER@$SSH_HOST" "mkdir -p $RELEASE"
+
+          for DIR in themes modules override; do
+            rsync -az --delete -e "ssh -p $SSH_PORT" \
+              "./$DIR/" "$SSH_USER@$SSH_HOST:$RELEASE/$DIR/"
+          done
+
+      - name: Przepiecie symlinka i cache
+        env:
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+          SSH_PORT: ${{ secrets.SSH_PORT || 22 }}
+          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+          PS_ROOT: ${{ secrets.PS_ROOT }}
+        run: |
+          ssh -p "$SSH_PORT" "$SSH_USER@$SSH_HOST" bash -s <<EOF
+            set -e
+            RELEASE="$DEPLOY_PATH/releases/${GITHUB_SHA::8}"
+
+            # Nasz kod wchodzi do drzewa Presty. Core i img/upload/download
+            # zostaja nietkniete - one nie sa w repo.
+            rsync -a --delete "\$RELEASE/themes/soczewki24/" "$PS_ROOT/themes/soczewki24/"
+            rsync -a "\$RELEASE/modules/" "$PS_ROOT/modules/"
+            rsync -a "\$RELEASE/override/" "$PS_ROOT/override/"
+
+            cd "$PS_ROOT"
+            php bin/console cache:clear --no-warmup --env=prod || rm -rf var/cache/prod
+
+            # Zostawiamy 5 ostatnich release'ow do rollbacku
+            ls -1dt "$DEPLOY_PATH/releases/"* | tail -n +6 | xargs -r rm -rf
+          EOF

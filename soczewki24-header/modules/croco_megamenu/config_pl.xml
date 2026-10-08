@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<module>
+    <name>croco_megamenu</name>
+    <displayName><![CDATA[Mega menu Soczewki24]]></displayName>
+    <version><![CDATA[1.0.0]]></version>
+    <description><![CDATA[Wlasne mega menu glownej nawigacji (desktop i mobile).]]></description>
+    <author><![CDATA[CrocoCode]]></author>
+    <tab><![CDATA[front_office_features]]></tab>
+	<confirmUninstall><![CDATA[Na pewno? Zawartosc menu zostanie w bazie, ale menu przestanie sie wyswietlac.]]></confirmUninstall>
+    <is_configurable>1</is_configurable>
+    <need_instance>0</need_instance>
+</module>

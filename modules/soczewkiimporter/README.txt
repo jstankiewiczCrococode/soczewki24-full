@@ -1,7 +1,7 @@
 Soczewki24 Importer 0.3.1
 
 Etap 3:
-- importuje tylko aktualnie wyświetlany batch (20 produktów),
+- importuje tylko aktualnie wyświetlany batch (100 produktów),
 - nie przechodzi automatycznie do następnego batcha,
 - mapuje wszystkie ścieżki g:product_type do istniejących kategorii,
 - zapisuje opis, cenę, cenę promocyjną (jeśli występuje jako cena sprzedażowa), markę, EAN/GTIN, referencję MPN/feed,

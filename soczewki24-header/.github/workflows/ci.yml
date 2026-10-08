@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main, develop]
+
+jobs:
+  theme:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: themes/soczewki24/.nvmrc
+          cache: npm
+          cache-dependency-path: themes/soczewki24/package-lock.json
+      - working-directory: themes/soczewki24
+        run: npm ci
+      - name: Stylelint
+        working-directory: themes/soczewki24
+        run: npm run stylelint
+      - name: ESLint
+        working-directory: themes/soczewki24
+        run: npm run lint
+      - name: Testy
+        working-directory: themes/soczewki24
+        run: npm test
+      - name: Build
+        working-directory: themes/soczewki24
+        run: npm run build
+
+  php:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+      - name: Lint PHP
+        run: find modules override -name "*.php" -print0 | xargs -0 -n1 php -l

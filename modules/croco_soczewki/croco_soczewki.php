@@ -32,11 +32,11 @@ class Croco_Soczewki extends Module
     {
         $this->name = 'croco_soczewki';
         $this->tab = 'front_office_features';
-<<<<<<< HEAD
+
         $this->version = '1.1.0';
-=======
+
         $this->version = '1.0.1';
->>>>>>> 75fbb78 (feat: PDP promo cards managed in BO and assigned to categories)
+
         $this->author = 'CrocoCode';
         $this->need_instance = 0;
         $this->ps_versions_compliancy = ['min' => '9.1.0', 'max' => _PS_VERSION_];
@@ -75,13 +75,13 @@ class Croco_Soczewki extends Module
 
     public function uninstall(): bool
     {
-<<<<<<< HEAD
+
         return parent::uninstall() && $this->uninstallConfiguration();
-=======
+
         // Celowo NIE kasujemy tabel - dane klienta zostaja.
         // Kasowanie tylko przez swiadoma migracje.
         return $this->uninstallPromoCardsTab() && parent::uninstall() && $this->uninstallConfiguration();
->>>>>>> 75fbb78 (feat: PDP promo cards managed in BO and assigned to categories)
+
     }
 
     private function installDatabase(): bool
@@ -133,8 +133,6 @@ class Croco_Soczewki extends Module
         return $result;
     }
 
-<<<<<<< HEAD
-=======
     /**
      * Karty promocyjne na PDP: tabele, zakladka w BO i hooki. Publiczna, bo wola ja
      * tez migracje z upgrade/. Idempotentna - mozna ja odpalic na modul, ktory juz to ma.
@@ -266,7 +264,7 @@ class Croco_Soczewki extends Module
      * Assety motywu buduje webpack, wiec tutaj ladujemy tylko to,
      * co jest scisle zwiazane z logika tego modulu.
      */
->>>>>>> 75fbb78 (feat: PDP promo cards managed in BO and assigned to categories)
+
     public function hookActionFrontControllerSetMedia(): void
     {
         if (!Configuration::get('CROCO_SOCZEWKI_ENABLED')) {
@@ -280,7 +278,7 @@ class Croco_Soczewki extends Module
         // );
     }
 
-    public function hookDisplayHeader(): string
+    public function r(): string
     {
         return '';
     }
@@ -440,7 +438,7 @@ class Croco_Soczewki extends Module
                         ),
                         'name' => 'CROCO_BANNER_TEXT',
                         'desc' => $this->trans(
-                            'Puste pole ukrywa pasek. Po zmianie tekstu pasek wraca do osob, ktore zamknely poprzedni.',
+                            'Puste pole ukrywa pasek. Po zmianie tekstu pasek wraca do osob, ktore zamknely .',
                             [],
                             'Modules.Crocosoczewki.Admin'
                         ),

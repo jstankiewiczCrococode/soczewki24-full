@@ -1,0 +1,11 @@
+@include media-breakpoint-up(xxl) {
+  .container,
+  .container-fluid,
+  .container-sm,
+  .container-md,
+  .container-lg,
+  .container-xl,
+  .container-xxl {
+    --#{$prefix}gutter-x: 4rem;
+  }
+}

@@ -25,13 +25,13 @@ $md: map.get($grid-breakpoints, "md");
 
   @media (max-width: $md) {
     padding-top: 40px;
-    padding-right: 16px;
+    padding-right: 0px;
     padding-bottom: 40px;
-    padding-left: 16px;
+    padding-left: 0px;
 
     .container{
-        padding-right: 0px;
-        padding-left: 0px;
+        padding-right: 16px;
+        padding-left: 16px;
     }
   }
 

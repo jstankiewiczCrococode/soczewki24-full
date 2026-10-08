@@ -1,0 +1,36 @@
+$component-name: form-check-label;
+
+.#{$component-name} {
+  &.required {
+    &::before {
+      color: var(--bs-danger);
+      content: "*" / " ";
+    }
+  }
+}
+
+.form-check-input {
+  &[type="radio"] {
+    &:checked {
+      background-color: $form-check-input-bg;
+    }
+
+    &:hover:not(:disabled) {
+      border-color: $socz-primary-700;
+    }
+  }
+
+}
+
+.form-check:not(.form-switch) .form-check-input[type="checkbox"] {
+  &:checked:hover:not(:disabled) {
+    background-color: $socz-primary-700;
+    border-color: $socz-primary-700;
+    background-image: escape-svg($form-check-input-indeterminate-bg-image);
+  }
+}
+
+.form-switch .form-check-input:checked:hover:not(:disabled) {
+  background-color: $socz-primary-700;
+  border-color: $socz-primary-700;
+}

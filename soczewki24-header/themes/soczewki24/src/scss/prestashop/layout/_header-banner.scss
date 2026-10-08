@@ -1,0 +1,37 @@
+$component-name: announcement-bar;
+
+.#{$component-name} {
+  color: $socz-white;
+  background-color: $socz-primary-600;
+
+  &__inner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: $socz-spacing-3;
+  }
+
+  &__text {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $socz-spacing-2;
+    margin: 0;
+  }
+
+  &__link {
+    display: inline-flex;
+    gap: $socz-spacing-2;
+    align-items: center;
+    color: inherit;
+
+    &:hover,
+    &:focus-visible {
+      color: inherit;
+    }
+  }
+
+  &__close {
+    padding: 0;
+  }
+}

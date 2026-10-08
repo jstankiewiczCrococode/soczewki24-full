@@ -1,0 +1,11 @@
+@use "sass:map";
+
+$component-name: form-control;
+
+.#{$component-name} {
+  &-xs {
+    padding: map.get($socz-input-sizes, "xs", "padding-y") map.get($socz-input-sizes, "xs", "padding-x");
+    font-size: map.get($socz-input-sizes, "xs", "font-size");
+    line-height: 18px;
+  }
+}

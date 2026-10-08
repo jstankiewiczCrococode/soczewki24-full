@@ -1,0 +1,35 @@
+body,
+html {
+  min-height: 100%;
+}
+
+body {
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: $socz-ls-body;
+}
+
+ol,
+ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+a {
+  transition: var(--bs-transition-default);
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  letter-spacing: $socz-ls-heading;
+}
+
+@include media-breakpoint-up(lg) {
+  h1, .h1 { font-size: $socz-fs-h1-lg; }
+  h2, .h2 { font-size: $socz-fs-h2-lg; }
+  h3, .h3 { font-size: $socz-fs-h3-lg; }
+  h4, .h4 { font-size: $socz-fs-h4-lg; }
+  h5, .h5 { font-size: $socz-fs-h5-lg; }
+  h6, .h6 { font-size: $socz-fs-h6-lg; }
+}

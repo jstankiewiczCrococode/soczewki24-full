@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<module>
+    <name>s24categorypage</name>
+    <displayName><![CDATA[S24 Category Page]]></displayName>
+    <version><![CDATA[1.0.0]]></version>
+    <description><![CDATA[Konfiguracja wspólnego layoutu stron kategorii Soczewki24.]]></description>
+    <author><![CDATA[CrocoCode]]></author>
+    <tab><![CDATA[front_office_features]]></tab>
+</module>

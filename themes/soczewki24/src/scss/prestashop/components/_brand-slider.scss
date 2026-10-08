@@ -10,6 +10,7 @@ $md: map.get($grid-breakpoints, "md");
   @media (max-width: $md) {
     padding-top: 40px;
     padding-bottom: 40px;
+    overflow: hidden;
   }
   
 

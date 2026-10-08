@@ -1,0 +1,2 @@
+Override tylko w ostatecznosci - najpierw hook, potem modul, dopiero potem override.
+Kazdy plik tutaj MUSI miec komentarz na gorze: co nadpisuje, dlaczego i kto zdecydowal.

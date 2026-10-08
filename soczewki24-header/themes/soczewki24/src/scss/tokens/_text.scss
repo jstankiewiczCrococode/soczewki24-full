@@ -1,0 +1,41 @@
+:root {
+  --socz-text-primary: #{$socz-gray-900};   // Text/text-primary
+  --socz-text-primary-on-brand: #{$socz-white};       // Text/text-primary-on_brand
+  --socz-text-secondary: #{$socz-gray-700};   // Text/text-secondary
+  --socz-text-secondary-hover: #{$socz-gray-800};   // Text/text-secondary_hoover
+  --socz-text-secondary-on-brand: #{$socz-gray-200};   // Text/text-secondary-on_brand
+  --socz-text-tertiary: #{$socz-gray-500};   // Text/text-tertiary
+  --socz-text-tertiary-hover: #{$socz-gray-600};   // Text/text-tertiary_hoover
+  --socz-text-tertiary-on-brand: #{$socz-primary-200}; // Text/text-tertiary-on_brand
+  --socz-text-white: #{$socz-white};       // Text/text-white
+  --socz-text-placeholder: #{$socz-gray-600};   // Text/text-placeholder
+
+  --socz-text-brand-primary: #{$socz-primary-900}; // Text/text-brand-primary
+  --socz-text-brand-primary-alt: #{$socz-primary-800}; // Text/text-brand-primary-alt
+  --socz-text-brand-secondary: #{$socz-primary-700}; // Text/text-brand-secondary
+  --socz-text-brand-secondary-hover: #{$socz-primary-800}; // Text/text-brand-secondary-hoover
+  --socz-text-brand-tertiary: #{$socz-primary-500}; // Text/text-brand-tertiary
+
+  --socz-text-success: #{$socz-success-600}; // Text/text-success
+  --socz-text-warning: #{$socz-danger-600};  // Text/text-warning (kolekcja "Danger" w Figmie = nasz bursztyn)
+  --socz-text-error: #{$socz-error-600};   // Text/text-error
+  --socz-text-error-hover: #{$socz-error-700};   // Text/text-error_hoover
+}
+
+@include color-mode(dark) {
+  --socz-text-primary: #{$socz-gray-100};
+  --socz-text-primary-on-brand: #{$socz-gray-50};
+  --socz-text-secondary: #{$socz-gray-300};
+  --socz-text-secondary-hover: #{$socz-gray-400};
+  --socz-text-placeholder: #{$socz-gray-400};
+
+  --socz-text-brand-primary: #{$socz-primary-100};
+  --socz-text-brand-primary-alt: #{$socz-primary-200};
+  --socz-text-brand-secondary: #{$socz-primary-300};
+  --socz-text-brand-secondary-hover: #{$socz-primary-400};
+
+  --socz-text-success: #{$socz-success-300};
+  --socz-text-warning: #{$socz-danger-300};
+  --socz-text-error: #{$socz-error-300};
+  --socz-text-error-hover: #{$socz-error-400};
+}

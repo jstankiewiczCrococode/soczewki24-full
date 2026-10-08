@@ -23,7 +23,7 @@ class AdminSoczewkiImporterController extends ModuleAdminController
         $reader = new SoczewkiImporterFeedReader($feed);
         $category = Tools::getValue('category', '');
         $page = max(1, (int)Tools::getValue('page', 1));
-        $limit = 20;
+        $limit = 100;
 
         $data = $reader->getItems($category, ($page - 1) * $limit, $limit);
         $tree = $reader->getCategoryTree();
