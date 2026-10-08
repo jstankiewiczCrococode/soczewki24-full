@@ -3,8 +3,8 @@ $component-name: pdp;
 .#{$component-name} {
   display: grid;
   grid-template-areas:
-    "title"
     "gallery"
+    "title"
     "buy"
     "content";
   grid-template-columns: minmax(0, 1fr);
@@ -41,6 +41,28 @@ $component-name: pdp;
     display: flex;
     flex-direction: column;
     gap: $socz-spacing-6;
+  }
+
+  @include media-breakpoint-down(lg) {
+    &__buy form > .pdp-buybox {
+      order: 1;
+    }
+
+    &__buy form > .product__additional-info {
+      order: 2;
+    }
+
+    &__buy form > .pdp-attributes {
+      order: 3;
+    }
+
+    &__buy form > .pdp__divider {
+      order: 4;
+    }
+
+    &__buy form > .promo-cards {
+      order: 5;
+    }
   }
 
   @include media-breakpoint-up(lg) {
@@ -396,15 +418,20 @@ $component-name: pdp;
 
 // --- Opis ------------------------------------------------------------------------
 .pdp-description {
-  line-height: 1.6;
   color: var(--bs-secondary-color);
 
+  p {
+    @extend .fs-body-regular;
+    font-weight: 500;
+    color: var(--socz-text-secondary)
+  }
+
   h2,
-  h3 {
+  h3,
+  h4 {
+    @extend .h6;
     margin-block: $socz-spacing-6 $socz-spacing-3;
-    font-size: $socz-fs-body-lg;
-    font-weight: 700;
-    color: var(--bs-body-color);
+    color: var(--socz-text-primary);
   }
 
   > :first-child {

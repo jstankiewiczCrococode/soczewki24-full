@@ -30,19 +30,19 @@
 {/block}
 
 {block name='content'}
-  {* Siatka: tytul, galeria, kolumna zakupowa (sticky), tresc. Klasy js-* / product-container sa wymagane przez core.js (odswiezanie wariantu przez AJAX). *}
+  {* Siatka: galeria, tytul, kolumna zakupowa (sticky), tresc - kolejnosc w DOM = kolejnosc na mobile. Klasy js-* / product-container sa wymagane przez core.js (odswiezanie wariantu przez AJAX). *}
   <div class="pdp product-container js-product-container" data-ps-ref="product-container">
-    {block name='product_header'}
-      <div class="pdp__title">
-        <h1 class="pdp__name h5 fw-semibold">{block name='page_title'}{$product.name}{/block}</h1>
-      </div>
-    {/block}
-
     <div class="pdp__gallery">
       {block name='product_cover_thumbnails'}
         {include file='catalog/_partials/product-cover-thumbnails.tpl'}
       {/block}
     </div>
+
+    {block name='product_header'}
+      <div class="pdp__title">
+        <h1 class="pdp__name h5 fw-semibold">{block name='page_title'}{$product.name}{/block}</h1>
+      </div>
+    {/block}
 
     <div class="pdp__buy" data-ps-ref="product-right" tabindex="-1">
       {block name='product_customization'}
