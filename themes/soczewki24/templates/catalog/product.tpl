@@ -40,6 +40,22 @@
 
     {block name='product_header'}
       <div class="pdp__title">
+        {* Wlasny markup zamiast _partials/breadcrumb.tpl: pusty blok 'breadcrumb' wyzej (wylaczenie layoutu) nadpisalby tez blok wewnatrz partiala. Klasy te same, wiec style Bootstrapa dzialaja. *}
+        {block name='product_breadcrumb'}
+          <nav data-depth="{$breadcrumb.count}" class="breadcrumb__wrapper" aria-label="{l s='Breadcrumb' d='Shop.Theme.Global'}">
+            <ol class="breadcrumb fs-body-sm">
+              {foreach from=$breadcrumb.links item=path name=breadcrumb}
+                <li class="breadcrumb-item">
+                  {if not $smarty.foreach.breadcrumb.last}
+                    <a href="{$path.url}" class="breadcrumb-link"><span>{$path.title}</span></a>
+                  {else}
+                    <span aria-current="page">{$path.title}</span>
+                  {/if}
+                </li>
+              {/foreach}
+            </ol>
+          </nav>
+        {/block}
         <h1 class="pdp__name h5 fw-semibold">{block name='page_title'}{$product.name}{/block}</h1>
       </div>
     {/block}

@@ -72,8 +72,6 @@
 {capture name='cover_actions'}{hook h='displayProductCoverActions' product=$product}{/capture}
 
 <div class="pdp-gallery">
-  {include file='catalog/_partials/product-flags.tpl'}
-
   {if !empty($smarty.capture.cover_actions)}
     <div class="pdp-gallery__actions">{$smarty.capture.cover_actions nofilter}</div>
   {/if}

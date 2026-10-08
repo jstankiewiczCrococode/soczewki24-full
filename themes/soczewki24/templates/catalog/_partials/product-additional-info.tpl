@@ -3,5 +3,6 @@
  * file that was distributed with this source code.
  *}
 <div class="product__additional-info js-product-additional-info">
-  {hook h='displayProductAdditionalInfo' product=$product}
+  {* ps_sharebuttons (udostepnianie) wylaczone na PDP; opinie z productcomments zostaja *}
+  {hook h='displayProductAdditionalInfo' product=$product excl='ps_sharebuttons'}
 </div>

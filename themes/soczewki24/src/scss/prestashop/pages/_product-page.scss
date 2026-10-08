@@ -33,6 +33,44 @@ $component-name: pdp;
     margin: 0;
   }
 
+  // Breadcrumb siedzi w kolumnie tytulu, nie na calej szerokosci strony - bez tla
+  // i odstepu pod soba z domyslnego stylu.
+  &__title .breadcrumb__wrapper {
+    margin-block-end: $socz-spacing-2;
+    background-color: transparent;
+
+    // Jedna linia takze od md (domyslny styl zawija od md); tytul ucina sie wielokropkiem.
+    .breadcrumb {
+      flex-wrap: nowrap;
+      padding-block: 0;
+      overflow-x: auto;
+      font-weight: 500;
+      color: var(--socz-text-secondary);
+      scrollbar-width: none;
+    }
+
+    .breadcrumb-link {
+      color: inherit;
+
+      &:hover,
+      &:focus-visible {
+        color: var(--bs-link-hover-color);
+      }
+    }
+
+    .breadcrumb-item:last-child {
+      flex: 0 1 auto;
+      min-width: 0;
+      overflow: hidden;
+      font-weight: 700;
+      text-overflow: ellipsis;
+    }
+
+    .breadcrumb-item:not(:last-child) {
+      flex-shrink: 0;
+    }
+  }
+
   &__divider {
     margin: 0;
   }
@@ -139,17 +177,6 @@ $component-name: pdp;
     z-index: 2;
   }
 
-  .product-flags {
-    top: $socz-spacing-4;
-    right: $socz-spacing-4;
-    left: auto;
-    flex-direction: column;
-    align-items: flex-end;
-    width: auto;
-    padding: 0;
-    margin: 0;
-  }
-
   &__toggle {
     display: flex;
     justify-content: center;
@@ -243,8 +270,17 @@ $component-name: pdp;
   background-color: $socz-color-surface;
   border-radius: $socz-radius-xxs;
 
+  @include media-breakpoint-down(md) {
+    grid-template-areas:
+      "prices"
+      "actions";
+    grid-template-columns: minmax(0, 1fr);
+    gap: $socz-spacing-3;
+  }
+
   .product__add-to-cart-container {
     display: contents;
+    width: 100%;
   }
 
   .product__prices {
@@ -299,11 +335,19 @@ $component-name: pdp;
 
   .product__add-to-cart {
     flex-grow: 0;
+
+    @include media-breakpoint-down(md) {
+      flex-grow: 1;
+    }
   }
 
   .product__add-to-cart-button {
     width: auto;
     white-space: nowrap;
+
+    @include media-breakpoint-down(md) {
+      width: 100%;
+    }
 
     .material-icons {
       display: none;
